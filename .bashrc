@@ -126,7 +126,7 @@ trap _exit EXIT
     alias ..='cd ..'
     alias ld='ls -ld'          # Show info about the directory
     alias lla='ls -lAF'        # Show hidden all files
-    # alias ll='ls -lF'          # Show long file information
+    alias ll='ls -lF'          # Show long file information
     alias l='ls -1F'          # Show long file information
     alias la='ls -AF'          # Show hidden files
     alias lx='ls -lXB'         # Sort by extension
@@ -137,7 +137,7 @@ trap _exit EXIT
     alias lr='ls -lR'          # Recursive ls
 
     # The ubiquitous 'll': directories first, with alphanumeric sorting:
-    alias ll='ls -lv --group-directories-first'
+    # alias ll='ls -lv --group-directories-first'
 
     alias cp="cp -i"
     alias mv="mv -i"
