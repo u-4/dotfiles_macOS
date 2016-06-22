@@ -75,9 +75,9 @@ ESC="$(echo -ne '\033')"
 # If set to a number greater than zero, the value is used as the number of trailing
 # directory components to retain when expanding the \w and \W prompt string
 # escapes (see PROMPTING below). Characters removed are replaced with an ellipsis.
-if is_at_least 4; then
-    export PROMPT_DIRTRIM=3
-fi
+# if is_at_least 4; then
+#     export PROMPT_DIRTRIM=3
+# fi
 
 # man bash
 export MYHISTFILE=~/.bash_myhistory
@@ -148,11 +148,11 @@ trap _exit EXIT
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
     # Use if colordiff exists
-    if has 'colordiff'; then
-        alias diff='colordiff -u'
-    else
-        alias diff='diff -u'
-    fi
+    # if has 'colordiff'; then
+    #     alias diff='colordiff -u'
+    # else
+    #     alias diff='diff -u'
+    # fi
 
     alias vi="vim"
 

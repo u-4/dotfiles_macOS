@@ -12,6 +12,5 @@ eval "$(pyenv init -)"
 # rbenv
 eval "$(rbenv init -)"
 
-
 # .bash_profileの最後
 test -r ~/.bashrc && . ~/.bashrc
