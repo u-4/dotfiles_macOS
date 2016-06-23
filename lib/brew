@@ -104,6 +104,7 @@ run_brew() {
       'coteditor'
       'dash'
       'dropbox'
+      'evernote'
       'google-chrome'
       'google-drive'
       'google-japanese-ime'
