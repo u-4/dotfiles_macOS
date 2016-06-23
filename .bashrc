@@ -2,14 +2,12 @@
 # bashrcとbash_profileを使い分ける
 #
 
-#
-
-
-# Homebrew Cask link ~/Applications > /Applications
-# export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # Homebrew Github access token (public repo)
-export HOMEBREW_GITHUB_API_TOKEN=e1596307a1d037619e696d1ddec4bf230fedc9ac
+# このファイルはGitHubでpublicで管理するのでAPI tokenは別ファイルに
+if [ -f ~/.brew_api_token ];then
+  source ~/.brew_api_token
+fi
 
 # Brew-fileのラッパー
 if [ -f $(brew --prefix)/etc/brew-wrap ];then

@@ -1,0 +1,6 @@
+#
+# GitHubのPersonal Access Tokenを公開される.bashrcには書けないのでこちらへ
+#
+
+export HOMEBREW_GITHUB_API_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
