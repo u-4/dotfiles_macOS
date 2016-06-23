@@ -8,8 +8,8 @@
 # Homebrew Cask link ~/Applications > /Applications
 # export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
-# Homebrew Github access token
-export HOMEBREW_GITHUB_API_TOKEN=93878761e5677afa1767f462fe1f98fea3518ee6
+# Homebrew Github access token (public repo)
+export HOMEBREW_GITHUB_API_TOKEN=e1596307a1d037619e696d1ddec4bf230fedc9ac
 
 # Brew-fileのラッパー
 if [ -f $(brew --prefix)/etc/brew-wrap ];then
