@@ -10,9 +10,9 @@ if [ -f ~/.brew_api_token ];then
 fi
 
 # Brew-fileのラッパー
-if [ -f $(brew --prefix)/etc/brew-wrap ];then
-  source $(brew --prefix)/etc/brew-wrap
-fi
+# if [ -f $(brew --prefix)/etc/brew-wrap ];then
+#   source $(brew --prefix)/etc/brew-wrap
+# fi
 
 export PAGER=less
 export LESS='-i -N -w  -z-4 -g -e -M -X -F -R -P%t?f%f :stdin .?pb%pb\%:?lbLine %lb:?bbByte %bb:-...'
@@ -121,6 +121,7 @@ trap _exit EXIT
 # command alias
 #
 
+#    alias brew="env PATH=${PATH/\/Users\/ytamai\/\.pyenv\/shims:/} brew"
     alias ..='cd ..'
     alias ld='ls -ld'          # Show info about the directory
     alias lla='ls -lAF'        # Show hidden all files
