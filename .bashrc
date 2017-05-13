@@ -35,40 +35,40 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 # hence the 'Green' 'BRed' 'Red' sequence I often use in my prompt.
 
 # Normal Colors
-Black='\033[0;30m'        # Black
-Red='\033[0;31m'          # Red
-Green='\033[0;32m'        # Green
-Yellow='\033[0;33m'       # Yellow
-Blue='\033[0;34m'         # Blue
-Purple='\033[0;35m'       # Purple
-Cyan='\033[0;36m'         # Cyan
-White='\033[0;37m'        # White
+#Black='\033[0;30m'        # Black
+#Red='\033[0;31m'          # Red
+#Green='\033[0;32m'        # Green
+#Yellow='\033[0;33m'       # Yellow
+#Blue='\033[0;34m'         # Blue
+#Purple='\033[0;35m'       # Purple
+#Cyan='\033[0;36m'         # Cyan
+#White='\033[0;37m'        # White
 
 # Bold
-BBlack='\033[1;30m'       # Black
-BRed='\033[1;31m'         # Red
-BGreen='\033[1;32m'       # Green
-BYellow='\033[1;33m'      # Yellow
-BBlue='\033[1;34m'        # Blue
-BPurple='\033[1;35m'      # Purple
-BCyan='\033[1;36m'        # Cyan
-BWhite='\033[1;37m'       # White
+#BBlack='\033[1;30m'       # Black
+#BRed='\033[1;31m'         # Red
+#BGreen='\033[1;32m'       # Green
+#BYellow='\033[1;33m'      # Yellow
+#BBlue='\033[1;34m'        # Blue
+#BPurple='\033[1;35m'      # Purple
+#BCyan='\033[1;36m'        # Cyan
+#BWhite='\033[1;37m'       # White
 
 # Background
-On_Black='\033[40m'       # Black
-On_Red='\033[41m'         # Red
-On_Green='\033[42m'       # Green
-On_Yellow='\033[43m'      # Yellow
-On_Blue='\033[44m'        # Blue
-On_Purple='\033[45m'      # Purple
-On_Cyan='\033[46m'        # Cyan
-On_White='\033[47m'       # White
+#On_Black='\033[40m'       # Black
+#On_Red='\033[41m'         # Red
+#On_Green='\033[42m'       # Green
+#On_Yellow='\033[43m'      # Yellow
+#On_Blue='\033[44m'        # Blue
+#On_Purple='\033[45m'      # Purple
+#On_Cyan='\033[46m'        # Cyan
+#On_White='\033[47m'       # White
 
-NC="\033[m"               # Color Reset
-CR="$(echo -ne '\r')"
-LF="$(echo -ne '\n')"
-TAB="$(echo -ne '\t')"
-ESC="$(echo -ne '\033')"
+#NC="\033[m"               # Color Reset
+#CR="$(echo -ne '\r')"
+#LF="$(echo -ne '\n')"
+#TAB="$(echo -ne '\t')"
+#ESC="$(echo -ne '\033')"
 
 # If set to a number greater than zero, the value is used as the number of trailing
 # directory components to retain when expanding the \w and \W prompt string
@@ -78,44 +78,44 @@ ESC="$(echo -ne '\033')"
 # fi
 
 # man bash
-export MYHISTFILE=~/.bash_myhistory
-export HISTCONTROL=ignoreboth:erasedups
-export HISTTIMEFORMAT="%Y/%m/%d %H:%M:%S:   "
-export HISTSIZE=50000
-export HISTFILESIZE=50000
+#export MYHISTFILE=~/.bash_myhistory
+#export HISTCONTROL=ignoreboth:erasedups
+#export HISTTIMEFORMAT="%Y/%m/%d %H:%M:%S:   "
+#export HISTSIZE=50000
+#export HISTFILESIZE=50000
 
-show_exit() {
-    if [ "$1" -eq 0 ]; then
-        return
-    fi
-    echo -e "\007exit $1"
-}
+#show_exit() {
+#    if [ "$1" -eq 0 ]; then
+#        return
+#    fi
+#    echo -e "\007exit $1"
+#}
+#
+#log_history() {
+#    echo "$(date '+%Y-%m-%d %H:%M:%S') $HOSTNAME:$$ $PWD ($1) $(history 1)" >> $MYHISTFILE
+#}
 
-log_history() {
-    echo "$(date '+%Y-%m-%d %H:%M:%S') $HOSTNAME:$$ $PWD ($1) $(history 1)" >> $MYHISTFILE
-}
-
-prompt_cmd() {
-    local s=$?
-    show_exit $s;
-    log_history $s;
-}
-
-end_history() {
-    log_history $?;
-    echo "$(date '+%Y-%m-%d %H:%M:%S') $HOSTNAME:$$ $PWD (end)" >> $MYHISTFILE
-}
-PROMPT_COMMAND="prompt_cmd;$PROMPT_COMMAND"
-
-_exit() {
-    end_history
-    echo -e  "${BRed}Hasta la vista, baby!"
-    echo -en "\033[m"
-}
-trap _exit EXIT
-
-[ -z "$TMPDIR" ] && TMPDIR=/tmp
-
+#prompt_cmd() {
+#    local s=$?
+#    show_exit $s;
+#    log_history $s;
+#}
+#
+#end_history() {
+#    log_history $?;
+#    echo "$(date '+%Y-%m-%d %H:%M:%S') $HOSTNAME:$$ $PWD (end)" >> $MYHISTFILE
+#}
+#PROMPT_COMMAND="prompt_cmd;$PROMPT_COMMAND"
+#
+#_exit() {
+#    end_history
+#    echo -e  "${BRed}Hasta la vista, baby!"
+#    echo -en "\033[m"
+#}
+#trap _exit EXIT
+#
+#[ -z "$TMPDIR" ] && TMPDIR=/tmp
+#
 
 #
 # command alias
@@ -123,17 +123,17 @@ trap _exit EXIT
 
 #    alias brew="env PATH=${PATH/\/Users\/ytamai\/\.pyenv\/shims:/} brew"
     alias ..='cd ..'
-    alias ld='ls -ld'          # Show info about the directory
-    alias lla='ls -lAF'        # Show hidden all files
+#    alias ld='ls -ld'          # Show info about the directory
+#    alias lla='ls -lAF'        # Show hidden all files
     alias ll='ls -lF'          # Show long file information
-    alias l='ls -1F'          # Show long file information
+#    alias l='ls -1F'          # Show long file information
     alias la='ls -AF'          # Show hidden files
-    alias lx='ls -lXB'         # Sort by extension
-    alias lk='ls -lSr'         # Sort by size, biggest last
-    alias lc='ls -ltcr'        # Sort by and show change time, most recent last
-    alias lu='ls -ltur'        # Sort by and show access time, most recent last
-    alias lt='ls -ltr'         # Sort by date, most recent last
-    alias lr='ls -lR'          # Recursive ls
+#    alias lx='ls -lXB'         # Sort by extension
+#    alias lk='ls -lSr'         # Sort by size, biggest last
+#    alias lc='ls -ltcr'        # Sort by and show change time, most recent last
+#    alias lu='ls -ltur'        # Sort by and show access time, most recent last
+#    alias lt='ls -ltr'         # Sort by date, most recent last
+#    alias lr='ls -lR'          # Recursive ls
 
     # The ubiquitous 'll': directories first, with alphanumeric sorting:
     # alias ll='ls -lv --group-directories-first'
@@ -146,6 +146,8 @@ trap _exit EXIT
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
+    alias encfsx='encfs -o local -v -o umask='007' -o uid='0' -o allow_other'
+
     # Use if colordiff exists
     # if has 'colordiff'; then
     #     alias diff='colordiff -u'
