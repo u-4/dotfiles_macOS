@@ -14,6 +14,14 @@ fi
 #   source $(brew --prefix)/etc/brew-wrap
 # fi
 
+export LANG=ja_JP.UTF-8
+export LC_CTYPE=ja_JP.UTF-8
+export LC_NUMERIC=ja_JP.UTF-8
+export LC_TIME=ja_JP.UTF-8
+export LC_MESSAGES=ja_JP.UTF-8
+export LC_MONETARY=ja_JP.UTF-8
+export LC_COLLATE=ja_JP.UTF-8
+
 export PAGER=less
 export LESS='-i -N -w  -z-4 -g -e -M -X -F -R -P%t?f%f :stdin .?pb%pb\%:?lbLine %lb:?bbByte %bb:-...'
 export LESS='-f -N -X -i -P ?f%f:(stdin). ?lb%lb?L/%L.. [?eEOF:?pb%pb\%..]'
