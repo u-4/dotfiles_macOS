@@ -14,6 +14,14 @@ fi
 #   source $(brew --prefix)/etc/brew-wrap
 # fi
 
+#
+# bash-powerline
+#
+source ~/.bash-powerline.sh
+
+#
+# 言語設定
+#
 export LANG=ja_JP.UTF-8
 export LC_CTYPE=ja_JP.UTF-8
 export LC_NUMERIC=ja_JP.UTF-8
