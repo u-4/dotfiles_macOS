@@ -14,21 +14,21 @@ $ xcode-select --install
 Run the following commnad.
 
 ```
-$ bash -c "$(curl -fsSL raw.github.com/okamos/dotfiles/master/dotfiles)"
+$ bash -c "$(curl -fsSL raw.github.com/u-4/dotfiles/master/dotfiles)"
 # Overwrite dotfiles and deploy
-$ bash -c "$(curl -fsSL raw.github.com/okamos/dotfiles/master/dotfiles)" -- -f -s deploy
+$ bash -c "$(curl -fsSL raw.github.com/u-4/dotfiles/master/dotfiles)" -- -f -s deploy
 ```
 
 ## Initialize OS X
 
 ```
-$ ~/dotfiles/dotfiles initialize
+$ ~/.dotfiles/dotfiles initialize
 ```
 
 ## Deploy dotfiles
 
 ```
-$ ~/dotfiles/dotfiles deploy
+$ ~/.dotfiles/dotfiles deploy
 ```
 
 ## TODO
