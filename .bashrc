@@ -22,6 +22,7 @@ source ~/.bash-powerline.sh
 #
 # 言語設定
 #
+
 export LANG=ja_JP.UTF-8
 export LC_CTYPE=ja_JP.UTF-8
 export LC_NUMERIC=ja_JP.UTF-8
@@ -31,9 +32,30 @@ export LC_MONETARY=ja_JP.UTF-8
 export LC_COLLATE=ja_JP.UTF-8
 
 export PAGER=less
-export LESS='-i -N -w  -z-4 -g -e -M -X -F -R -P%t?f%f :stdin .?pb%pb\%:?lbLine %lb:?bbByte %bb:-...'
-export LESS='-f -N -X -i -P ?f%f:(stdin). ?lb%lb?L/%L.. [?eEOF:?pb%pb\%..]'
-export LESS='-f -X -i -P ?f%f:(stdin). ?lb%lb?L/%L.. [?eEOF:?pb%pb\%..]'
+# LESS のオプションたち
+# -N:行番号を追加
+# -M:見ている行数、パーセンテージ、ファイル名を表示する
+# -i:検索時に大文字が入っていなければ大文字小文字を区別しない
+# -R:ANSI Color Escape Sequenceを色表示する
+# -S:1行が画面に入りきらない場合に折り返さない
+# -s:空行が複数ある時に表示上は1行にしてくれる
+# -F:行数が短くて1画面に収まる場合はlessをすぐに終了
+# -X:less終了時に画面をクリアしない
+# -g:単語検索時にすべての該当単語ではなく現在フォーカスのあるもののみ反転表示
+# -j（数字）:検索時に検索対象単語が上から（数字）行目に表示される
+# -p （パターン）:パターンにマッチした行を1行目に表示する
+# -u:バックスペースやタブを制御文字として取り扱う
+
+export LESS='-N -M -i -R -F -X -g'
+
+# 
+# 以下は参考にした.bashrcで使われていた設定。
+# git logで変な化け方するので上記のようにわかる文だけで設定し直して見た。
+#
+# export LESS='-i -N -w  -z-4 -g -e -M -X -F -R -P%t?f%f :stdin .?pb%pb\%:?lbLine %lb:?bbByte %bb:-...'
+# export LESS='-f -N -X -i -P ?f%f:(stdin). ?lb%lb?L/%L.. [?eEOF:?pb%pb\%..]'
+# export LESS='-f -X -i -P ?f%f:(stdin). ?lb%lb?L/%L.. [?eEOF:?pb%pb\%..]'
+
 export LESSCHARSET='utf-8'
 
 # LESS man page colors (makes Man pages more readable).
