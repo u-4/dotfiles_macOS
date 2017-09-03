@@ -10,9 +10,9 @@ if [ -f ~/.brew_api_token ];then
 fi
 
 # Brew-fileのラッパー
-# if [ -f $(brew --prefix)/etc/brew-wrap ];then
-#   source $(brew --prefix)/etc/brew-wrap
-# fi
+if [ -f $(brew --prefix)/etc/brew-wrap ];then
+  source $(brew --prefix)/etc/brew-wrap
+fi
 
 #
 # bash-powerline
@@ -160,6 +160,8 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 # command alias
 #
 
+# pyenvとHomebrewの共存用
+    alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin brew"
 #    alias brew="env PATH=${PATH/\/Users\/ytamai\/\.pyenv\/shims:/} brew"
     alias ..='cd ..'
     alias ld='ls -ld'          # Show info about the directory
