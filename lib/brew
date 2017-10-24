@@ -14,7 +14,6 @@ run_brew() {
 
     brew tap 'caskroom/cask'
     brew tap 'argon/mas'
-    brew tap 'homebrew/apache'
     brew tap 'homebrew/core'
     brew tap 'homebrew/science'
     brew tap 'sanemat/font'
@@ -37,7 +36,6 @@ run_brew() {
       'gcc'
       'git'
       'go'
-      'httpd22'
       'jq'
       'lua'
       'mas'
