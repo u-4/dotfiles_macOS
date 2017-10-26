@@ -2,14 +2,37 @@
 # bashrcとbash_profileを使い分ける
 #
 
+#
+# .bashrc再読み込み時のPATH重複追加を回避
+#
 
+function _reset_path {
+  local p
+  for p in PATH LD_LIBRARY_PATH PYTHONPATH PKG_CONFIG_PATH;do
+    local ip=$(eval echo "\$INIT_$p")
+    if [ -z "$ip" ];then
+      # Set initial values
+      eval export INIT_$p="\$$p"
+    else
+      # Reset paths
+      eval export $p="$ip"
+    fi
+  done
+}
+_reset_path
+
+#
 # Homebrew Github access token (public repo)
 # このファイルはGitHubでpublicで管理するのでAPI tokenは別ファイルに
+#
+
 if [ -f ~/.brew_api_token ];then
   source ~/.brew_api_token
 fi
 
+#
 # Brew-fileのラッパー
+#
 if [ -f $(brew --prefix)/etc/brew-wrap ];then
   source $(brew --prefix)/etc/brew-wrap
 fi
@@ -17,6 +40,7 @@ fi
 #
 # bash-powerline
 #
+
 source ~/.bash-powerline.sh
 
 #
@@ -160,7 +184,9 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 # command alias
 #
 
+#
 # pyenvとHomebrewの共存用
+#
     alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin brew"
 #    alias brew="env PATH=${PATH/\/Users\/ytamai\/\.pyenv\/shims:/} brew"
     alias ..='cd ..'
