@@ -14,7 +14,6 @@ run_brew() {
 
     brew tap 'caskroom/cask'
     brew tap 'argon/mas'
-    brew tap 'homebrew/apache'
     brew tap 'homebrew/core'
     brew tap 'homebrew/science'
     brew tap 'sanemat/font'
@@ -44,7 +43,6 @@ run_brew() {
       'nkf'
       'neovim'
       'nodebrew'
-      'openblas'
       'openssl'
       'peco'
       'postgresql'
@@ -53,7 +51,6 @@ run_brew() {
       'qt'
       'ruby-build'
       'rbenv'
-      'ricty --vim-powerline'
       's3cmd'
       'sqlite'
       'the_platinum_searcher'
@@ -61,7 +58,6 @@ run_brew() {
       'tree'
       'wget'
       'zsh'
-      'vim --with-lua'
     )
 
     local installed=`brew list`
@@ -125,11 +121,13 @@ run_brew() {
       'quicklook-csv'
       'quicklook-json'
       'readcube'
+      'r-app'
       'rstudio'
       'scriptql'
       'skitch'
       'skype'
       'slack'
+      'suspicious-package'
       'the-unarchiver'
       'tripmode'
       'vlc'
