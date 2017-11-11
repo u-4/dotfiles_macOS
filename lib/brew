@@ -37,7 +37,6 @@ run_brew() {
       'gcc'
       'git'
       'go'
-      'httpd22'
       'jq'
       'lua'
       'mas'
