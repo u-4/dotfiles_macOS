@@ -5,6 +5,7 @@
 	tool = vimdiff
 [core]
 	editor = nvim
+	excludesfile = ~/.gitignore_global
 [gui]
 	encoding = utf-8
 [color]
