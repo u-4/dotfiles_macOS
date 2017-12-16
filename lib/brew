@@ -24,8 +24,6 @@ run_brew() {
     local -a desired_formulae=(
       'autoconf'
       'automake'
-      'awscli'
-      'asciinema'
       'bash-completion'
       'bash'
       'brew-file'
@@ -35,7 +33,6 @@ run_brew() {
       'fontforge'
       'gcc'
       'git'
-      'go'
       'jq'
       'lua'
       'mas'
@@ -57,7 +54,6 @@ run_brew() {
       'tmux'
       'tree'
       'wget'
-      'zsh'
     )
 
     local installed=`brew list`
@@ -82,9 +78,10 @@ run_brew() {
       [[ $? ]] && echo "$(tput setaf 2)Installed missing formulae ✔︎$(tput sgr0)"
     fi
 
-    ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
-    launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
-    launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+#  postgresqlがらみの記述をとりあえずコメントアウト
+#    ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
+#    launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+#    launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
     if [ -z "${installed_ricty}"  ]; then
       echo "Reload fonts. This could take a while..."
       local cellar=`brew --config | grep 'HOMEBREW_CELLAR' | cut -d' ' -f 2`
@@ -103,7 +100,6 @@ run_brew() {
       'dash'
       'dropbox'
       'evernote'
-      'flip4mac'
       'google-photos-backup-and-sync'
       'google-chrome'
       'gyazo'
@@ -111,7 +107,6 @@ run_brew() {
       'macs-fan-control'
       'macvim'
       'onyx'
-      'osxfuse'
       'parallels'
       'qlcolorcode'
       'qlimagesize'
