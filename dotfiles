@@ -89,28 +89,28 @@ link_files() {
 initialize() {
   run_brew
 
-  [ ! -d ${HOME}/.zplug ] && git clone https://github.com/b4b4r07/zplug ${HOME}/.zplug
-  [ ! -d ${HOME}/.tmux/plugins/tpm ] && git clone https://github.com/tmux-plugins/tpm ${HOME}/.tmux/plugins/tpm
+#  [ ! -d ${HOME}/.zplug ] && git clone https://github.com/b4b4r07/zplug ${HOME}/.zplug
+#  [ ! -d ${HOME}/.tmux/plugins/tpm ] && git clone https://github.com/tmux-plugins/tpm ${HOME}/.tmux/plugins/tpm
 
-  if has "nodebrew"; then
-    # Install latest node
-    current=`nodebrew ls | tail -n 1 | cut -d' ' -f 2`
-    if [ ${current} = "none"  ]; then
-      curl -sL git.io/nodebrew | perl - setup
-      nodebrew install-binary latest
-      nodebrew use latest
-    fi
-  fi
+#  if has "nodebrew"; then
+#    # Install latest node
+#    current=`nodebrew ls | tail -n 1 | cut -d' ' -f 2`
+#    if [ ${current} = "none"  ]; then
+#      curl -sL git.io/nodebrew | perl - setup
+#      nodebrew install-binary latest
+#      nodebrew use latest
+#    fi
+#  fi
 # Brewで入れたプログラム言語管理コマンド初期処理
-  if has "rbenv"; then
-    # Install latest ruby
-    latest=`rbenv install --list | grep -v - | tail -n 1`
-    current=`rbenv versions | tail -n 1 | grep -oe '\d\.\d\.\d'`
-    if [ ${current} != ${latest} ]; then
-      rbenv install ${latest}
-      rbenv global ${latest}
-    fi
-  fi
+#  if has "rbenv"; then
+#    # Install latest ruby
+#    latest=`rbenv install --list | grep -v - | tail -n 1`
+#    current=`rbenv versions | tail -n 1 | grep -oe '\d\.\d\.\d'`
+#    if [ ${current} != ${latest} ]; then
+#      rbenv install ${latest}
+#      rbenv global ${latest}
+#    fi
+#  fi
 
 # Shellをzshにしてる→しない
 #  [ ${SHELL} != "/bin/zsh"  ] && chsh -s /bin/zsh
