@@ -45,6 +45,8 @@ run_brew() {
       'postgresql'
       'pyenv'
       'pyenv-virtualenv'
+      'python'
+      'python3'
       'qt'
       'ruby-build'
       'rbenv'
