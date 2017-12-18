@@ -93,9 +93,10 @@ run_brew() {
 
     local -a missing_formulae=()
     local -a desired_formulae=(
+      '1password'
       'alfred'
       'appcleaner'
-      'betterzipql'
+      'betterzip'
       'chrome-remote-desktop-host'
       'cooviewer'
       'coteditor'
@@ -109,7 +110,6 @@ run_brew() {
       'macs-fan-control'
       'macvim'
       'onyx'
-      'parallels'
       'qlcolorcode'
       'qlimagesize'
       'qlmarkdown'
