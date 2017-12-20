@@ -2,6 +2,9 @@
 # .R/.Rprofile
 #
 
+# package sync on Dropbox
+.libPaths("/Users/ytamai/Dropbox/99_References/90_Sync/R/library")
+
 #
 # 主に以下を参考
 # https://github.com/heavywatal/rwtl/blob/master/.R/.Rprofile
