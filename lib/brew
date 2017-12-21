@@ -107,6 +107,7 @@ run_brew() {
       'google-chrome'
       'gyazo'
       'java'
+      'java8'
       'macs-fan-control'
       'macvim'
       'onyx'
