@@ -48,7 +48,7 @@ options(readr.num_columns=0L)
 # Font
 # 
 
-## Mac OS X 環境では Quartz 描画をデフォルトに設定
+# Mac OS X 環境では Quartz 描画をデフォルトに設定
 if(capabilities("aqua")) {
   options(device="quartz");
 }
@@ -95,12 +95,15 @@ setHook(packageEvent("grDevices", "onLoad"), function(...) {
     );
   }
   
-  ## Linux 環境のフォント設定
-  if (capabilities("X11")) {
-    grDevices::X11.options(fonts=c(
-      "-kochi-gothic-%s-%s-*-*-%d-*-*-*-*-*-*-*",
-      "-adobe-symbol-medium-r-*-*-%d-*-*-*-*-*-*-*"));
-  }
+
+# 以下の「capabilities("X11")」があるとmacOSでXQuartzが起動してしまう
+
+#   ## Linux 環境のフォント設定
+#   if (capabilities("X11")) {
+#     grDevices::X11.options(fonts=c(
+#       "-kochi-gothic-%s-%s-*-*-%d-*-*-*-*-*-*-*",
+#       "-adobe-symbol-medium-r-*-*-%d-*-*-*-*-*-*-*"));
+#   }
   
   ## PostScript と PDF のフォント設定
   ## family="" で描画した文字列に使われる
