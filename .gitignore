@@ -2,7 +2,6 @@
 *~
 .DS_Store
 
-.config/*
 
 # R関連
 .Rhistory
@@ -10,6 +9,4 @@
 .Ruserdata
 .Rproj.user
 
-# whitelist
-!.config/nvim
 
