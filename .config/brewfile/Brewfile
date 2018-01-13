@@ -1,0 +1,114 @@
+
+# tap repositories and their packages
+
+tap homebrew/core
+brew autoconf
+brew automake
+brew bash
+brew bash-completion
+brew cairo
+brew coreutils
+brew ctags
+brew docker
+brew fontconfig
+brew fontforge
+brew freetype
+brew gcc
+brew gdbm
+brew gettext
+brew git
+brew glib
+brew gmp
+brew gobject-introspection
+brew graphite2
+brew harfbuzz
+brew highlight
+brew icu4c
+brew isl
+brew jemalloc
+brew jpeg
+brew jq
+brew libevent
+brew libffi
+brew libidn2
+brew libmpc
+brew libpng
+brew libtermkey
+brew libtiff
+brew libtool
+brew libunistring
+brew libuv
+brew libvterm
+brew lua
+brew luajit
+brew mas
+brew mpfr
+brew msgpack
+brew mysql
+brew neovim
+brew nkf
+brew nodebrew
+brew oniguruma
+brew openssl
+brew openssl@1.1
+brew pango
+brew pcre
+brew peco
+brew pixman
+brew pkg-config
+brew postgresql
+brew pyenv
+brew pyenv-virtualenv
+brew python
+brew python3
+brew qt
+brew rbenv
+brew readline
+brew ruby-build
+brew s3cmd
+brew sqlite
+brew the_platinum_searcher
+brew tmux
+brew tree
+brew unibilium
+brew wget
+brew xz
+
+tap homebrew/science
+
+tap caskroom/cask
+cask rstudio
+cask slack
+cask gyazo
+cask qlmarkdown
+cask betterzip
+cask r-app
+cask appcleaner
+cask qlvideo
+cask suspicious-package
+cask evernote
+cask scriptql
+cask the-unarchiver
+cask google-photos-backup-and-sync
+cask dropbox
+cask coteditor
+cask quicklook-json
+cask 1password
+cask qlstephen
+cask onyx
+cask qlcolorcode
+cask qlimagesize
+cask google-chrome
+cask xquartz
+cask quicklook-csv
+
+tap argon/mas
+
+tap rcmdnk/file
+brew brew-file
+
+tap sanemat/font
+
+# App Store applications
+appstore 784801555 Microsoft OneNote (15.41)
+appstore 497799835 Xcode (9.2)
