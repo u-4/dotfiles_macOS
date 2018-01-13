@@ -97,6 +97,7 @@ run_brew() {
       'alfred'
       'appcleaner'
       'betterzip'
+      'boxcryptor'
       'chrome-remote-desktop-host'
       'cooviewer'
       'coteditor'

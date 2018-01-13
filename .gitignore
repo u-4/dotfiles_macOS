@@ -2,14 +2,10 @@
 *~
 .DS_Store
 
-.config/*
-
 # R関連
 .Rhistory
 .RData
 .Ruserdata
 .Rproj.user
 
-# whitelist
-!.config/nvim
 
