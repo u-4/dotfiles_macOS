@@ -2,7 +2,7 @@
 *~
 .DS_Store
 
-.config/*
+.config/brwfile/*
 
 # R関連
 .Rhistory
