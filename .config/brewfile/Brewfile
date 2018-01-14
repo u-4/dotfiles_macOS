@@ -192,7 +192,7 @@ tap rcmdnk/file
 brew brew-file
 
 tap sanemat/font
-brew ricty --with-powerline
+brew ricty
 
 # App Store applications
 appstore 451732904 App Language Chooser (1.0)
