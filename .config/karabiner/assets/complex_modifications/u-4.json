@@ -143,7 +143,7 @@
       ]
     },
     {
-        "description": "Control-[ to ESC",
+        "description": "Control-[ to ESC (Emacs-modeと被り)",
         "manipulators": [
             {
                 "from": {
@@ -165,21 +165,8 @@
     },
         {
         "description": "Control-j to Return",
-        "extra_descriptions": [
-            "Other than browsers."
-        ],
         "manipulators": [
             {
-                "conditions": [
-                    {
-                        "bundle_identifiers": [
-                            "^org\\.mozilla\\.firefox$",
-                            "^org\\.waterfoxproject\\.waterfox$",
-                            "^com\\.google\\.Chrome$"
-                        ],
-                        "type": "frontmost_application_unless"
-                    }
-                ],
                 "from": {
                     "key_code": "j",
                     "modifiers": {
@@ -198,7 +185,28 @@
         ]
     },
     {
-        "description": "Control-h to Backspace",
+        "description": "Control-m to Return (emacs-modeと被り)",
+        "manipulators": [
+            {
+                "from": {
+                    "key_code": "m",
+                    "modifiers": {
+                        "mandatory": [
+                            "control"
+                        ]
+                    }
+                },
+                "to": [
+                    {
+                        "key_code": "return_or_enter"
+                    }
+                ],
+                "type": "basic"
+            }
+        ]
+    },
+    {
+        "description": "Control-h to Backspace (Emacs-modeと被り)",
         "manipulators": [
             {
                 "conditions": [
