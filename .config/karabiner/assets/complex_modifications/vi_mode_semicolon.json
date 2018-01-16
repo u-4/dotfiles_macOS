@@ -902,7 +902,7 @@
         {
           "type": "basic",
           "from": {
-            "key_code": "semicolon",
+            "key_code": "s",
             "modifiers": {
               "optional": [
                 "caps_lock"
@@ -914,7 +914,7 @@
               "key_code": "semicolon"
             },
             {
-              "key_code": "semicolon"
+              "key_code": "s"
             },
             {
               "key_code": "vk_none"
