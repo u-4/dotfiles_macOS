@@ -107,6 +107,7 @@ run_brew() {
       'google-photos-backup-and-sync'
       'google-chrome'
       'gyazo'
+      'karabiner-elements'
       'macs-fan-control'
       'macvim'
       'onyx'
