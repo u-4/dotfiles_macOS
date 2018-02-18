@@ -31,6 +31,7 @@ brew gawk
 brew gcc
 brew gdbm
 brew gettext
+brew ghostscript
 brew git
 brew glib
 brew gmp
@@ -86,6 +87,8 @@ brew openjpeg
 brew openssl
 brew openssl@1.1
 brew opus
+brew pandoc
+brew pandoc-citeproc
 brew pango
 brew pcre
 brew peco
@@ -151,6 +154,7 @@ cask skype
 cask appcleaner
 cask karabiner-elements
 cask qlvideo
+cask onedrive
 cask handbrake
 cask kindlegen
 cask chrome-remote-desktop-host
@@ -173,6 +177,7 @@ cask tripmode
 cask onyx
 cask qlcolorcode
 cask vmware-fusion
+cask mactex
 cask qlimagesize
 cask google-chrome
 cask xquartz
@@ -180,6 +185,9 @@ cask quicklook-csv
 cask zotero
 cask alfred
 cask skitch
+
+tap caskroom/fonts
+cask font-fontawesome
 
 tap caskroom/versions
 cask java8
