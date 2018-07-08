@@ -1,9 +1,13 @@
-#'
+#
 # .R/.Rprofile
 #
 
+
+# # test
+# print("user profile")
+
 # package sync on Dropbox
-.libPaths("/Users/ytamai/Dropbox/99_References/90_Sync/R/library")
+.libPaths("/Users/ytamai/Dropbox/.R/library")
 
 #
 # 主に以下を参考
@@ -206,3 +210,12 @@ ggplot2::theme_set(ggplot2::theme_bw(base_family="sans"))
 #         print(utils::sessionInfo(), locale=FALSE)
 #     }
 # })}
+
+# source projectdir/.Rprofile
+if (Sys.getenv("R_USER") != getwd()) {
+  if (file.exists(paste0(getwd(), "/.Rprofile"))) {
+    source(paste0(getwd(), "/.Rprofile"))
+  }
+}
+
+
