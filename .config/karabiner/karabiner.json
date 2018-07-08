@@ -11,7 +11,7 @@
                     "basic.simultaneous_threshold_milliseconds": 50,
                     "basic.to_delayed_action_delay_milliseconds": 50,
                     "basic.to_if_alone_timeout_milliseconds": 500,
-                    "basic.to_if_held_down_threshold_milliseconds": 500
+                    "basic.to_if_held_down_threshold_milliseconds": 250
                 },
                 "rules": [
                     {
@@ -2815,7 +2815,7 @@
                         "product_id": 571,
                         "vendor_id": 1452
                     },
-                    "ignore": false,
+                    "ignore": true,
                     "manipulate_caps_lock_led": true,
                     "simple_modifications": []
                 },
@@ -2828,7 +2828,7 @@
                         "product_id": 633,
                         "vendor_id": 1452
                     },
-                    "ignore": false,
+                    "ignore": true,
                     "manipulate_caps_lock_led": true,
                     "simple_modifications": []
                 }
@@ -2936,6 +2936,7 @@
             "simple_modifications": [],
             "virtual_hid_keyboard": {
                 "caps_lock_delay_milliseconds": 0,
+                "country_code": 0,
                 "keyboard_type": "jis"
             }
         }
