@@ -46,3 +46,7 @@ vignettes/*.pdf
 
 # R Notebook output html
 *.nb.html
+
+# Rmd html output
+*.html
+
