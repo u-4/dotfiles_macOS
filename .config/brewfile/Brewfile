@@ -12,6 +12,5 @@ brew x265
 
 # Other Cask applications
 cask boxcryptor
-cask fluid
 cask google-photos-backup-and-sync
 cask grammarly
