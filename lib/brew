@@ -103,7 +103,7 @@ run_brew() {
       'dash'
       'dropbox'
       'evernote'
-      'font-fontawsome'
+      'font-fontawesome'
       'grammarly'
       'google-photos-backup-and-sync'
       'google-chrome'
