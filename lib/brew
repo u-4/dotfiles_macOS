@@ -17,6 +17,8 @@ run_brew() {
     brew tap 'homebrew/core'
     brew tap 'sanemat/font'
     brew tap 'rcmdnk/file'
+    brew tap 'caskroom/fonts'
+    brew tap 'caskroom/versions'
 
     local list_formulae
     local -a missing_formulae
