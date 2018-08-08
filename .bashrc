@@ -46,6 +46,14 @@ if [ -f ~/.bash-powerline.sh ];then
 fi
 
 #
+# bash-completion
+# 
+
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+  . `brew --prefix`/etc/bash_completion
+fi
+
+#
 # 言語設定
 #
 
@@ -94,6 +102,8 @@ export LESSCHARSET='utf-8'
 #
 #    alias brew="PATH=\"/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin\" brew"
 #    alias brew="env PATH=${PATH/\/Users\/ytamai\/\.pyenv\/shims:/} brew"
+
+
     alias ..='cd ..'
     alias ld='ls -ld'          # Show info about the directory
     alias lla='ls -lAF'        # Show hidden all files
