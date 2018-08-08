@@ -129,8 +129,8 @@ set ambiwidth=double
 "hi ZenkakuSpace cterm=underline ctermfg=lightblue ctermbg=white
 "match ZenkakuSpace /　/
 "TAB,EOFなどを可視化する
-set list
-set listchars=tab:>-,extends:<,trail:-,eol:<
+"set list
+"set listchars=tab:>-,extends:<,trail:-,eol:<
 
 
 " ================================================================================
