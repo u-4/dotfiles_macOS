@@ -74,6 +74,10 @@ export LC_MESSAGES=ja_JP.UTF-8
 export LC_MONETARY=ja_JP.UTF-8
 export LC_COLLATE=ja_JP.UTF-8
 
+#
+# less関連
+#
+
 export PAGER=less
 # LESS のオプションたち
 # -N:行番号を追加
@@ -90,17 +94,12 @@ export PAGER=less
 # -u:バックスペースやタブを制御文字として取り扱う
 # -q:EOFに着いた時に通り過ぎても音を鳴らさない
 
+export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
 export LESS='-q -N -M -i -R -F -X -g'
-
-# 
-# 以下は参考にした.bashrcで使われていた設定。
-# git logで変な化け方するので上記のようにわかる文だけで設定し直して見た。
-#
-# export LESS='-i -N -w  -z-4 -g -e -M -X -F -R -P%t?f%f :stdin .?pb%pb\%:?lbLine %lb:?bbByte %bb:-...'
-# export LESS='-f -N -X -i -P ?f%f:(stdin). ?lb%lb?L/%L.. [?eEOF:?pb%pb\%..]'
-# export LESS='-f -X -i -P ?f%f:(stdin). ?lb%lb?L/%L.. [?eEOF:?pb%pb\%..]'
-
+# export LESS=" -R -X -F"
 export LESSCHARSET='utf-8'
+
+alias less='less -m -N -g -i -J --underline-special --SILENT'
 
 #
 # command alias
