@@ -67,7 +67,7 @@ run_brew() {
       'rbenv'
       's3cmd'
       'screen'
-      'source-hilight'
+      'source-highlight'
       'sqlite'
       'the_platinum_searcher'
       'tmux'
