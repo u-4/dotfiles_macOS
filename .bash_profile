@@ -2,6 +2,8 @@
 # .bash_profile
 # 
 
+# texinfo
+export PATH="/usr/local/opt/texinfo/bin:$PATH"
 
 # pyenv関連
 export PYENV_ROOT="$HOME/.pyenv"
