@@ -15,166 +15,170 @@ run_brew() {
     brew tap 'caskroom/cask'
     brew tap 'argon/mas'
     brew tap 'homebrew/core'
+    brew tap 'homebrew/bundle'
     brew tap 'sanemat/font'
-    brew tap 'rcmdnk/file'
     brew tap 'caskroom/fonts'
     brew tap 'caskroom/versions'
-
-    local list_formulae
-    local -a missing_formulae
-    local -a desired_formulae=(
-      'autoconf'
-      'automake'
-      'bash-completion'
-      'bash'
-      'binutils'
-      'boost'
-      'brew-file'
-      'coreutils'
-      'ctags'
-      'diffutils'
-      'findutils'
-      'fontforge'
-      'gawk'
-      'gcc'
-      'gnu-sed'
-      'gnu-tar'
-      'gnutls'
-      'git'
-      'gpg'
-      'grep'
-      'gzip'
-      'jq'
-      'less'
-      'lua'
-      'mas'
-      'mysql'
-      'nano'
-      'nkf'
-      'neovim'
-      'nodebrew'
-      'openssl'
-      'pandoc'
-      'peco'
-      'postgresql'
-      'pyenv'
-      'pyenv-virtualenv'
-      'python'
-      'python3'
-      'qt'
-      'ricty'
-      'ruby-build'
-      'rbenv'
-      's3cmd'
-      'screen'
-      'source-highlight'
-      'sqlite'
-      'the_platinum_searcher'
-      'tmux'
-      'tree'
-      'unzip'
-      'wdiff'
-      'wget'
-    )
-
-    local installed=`brew list`
-
-    for index in ${!desired_formulae[*]}
-    do
-      local formula=`echo ${desired_formulae[$index]} | cut -d' ' -f 1`
-      if [[ -z `echo "${installed}" | grep "^${formula}$"` ]]; then
-        missing_formulae=("${missing_formulae[@]}" "${desired_formulae[$index]}")
-      else
-        echo "Installed ${formula}"
-        [[ "${formula}" = "ricty" ]] && local installed_ricty=true
-      fi
-    done
-
-    if [[ "$missing_formulae" ]]; then
-      list_formulae=$( printf "%s " "${missing_formulae[@]}" )
-
-      echo "Installing missing Homebrew formulae..."
-      brew install $list_formulae
-
-      [[ $? ]] && echo "$(tput setaf 2)Installed missing formulae ✔︎$(tput sgr0)"
+    brew tap 'beeftornado/rmtree'
+    
+    if  [ ! -f ${HOME}/.Brewfile ]; then
+      ln -snfv ${DOT_DIRECTORY}/.Brewfile ${HOME}/.Brewfile
     fi
 
-#  postgresqlがらみの記述をとりあえずコメントアウト
-#    ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
-#    launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
-#    launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
-    if [ -z "${installed_ricty}"  ]; then
-      echo "Reload fonts. This could take a while..."
-      local cellar=`brew --config | grep 'HOMEBREW_CELLAR' | cut -d' ' -f 2`
-      find ${cellar}/ricty/*/share/fonts/Ricty*.ttf | xargs -I % cp % ~/Library/Fonts
-      fc-cache -vf
-    fi
+    brew bundle install --global
+    [[ $? ]] && echo "$(tput setaf 2)Installed missing formulae ✔︎$(tput sgr0)"
 
-    local -a missing_formulae=()
-    local -a desired_formulae=(
-      '1password'
-      'alfred'
-      'appcleaner'
-      'betterzip'
-      'boxcryptor'
-      'chrome-remote-desktop-host'
-      'cooviewer'
-      'coteditor'
-      'dash'
-      'docker'
-      'dropbox'
-      'evernote'
-      'font-fontawesome'
-      'grammarly'
-      'google-photos-backup-and-sync'
-      'google-chrome'
-      'java8'
-#     'karabiner-elements'
-      'kindle'
-      'macs-fan-control'
-      'mactex'
-      'macvim'
-      'qlcolorcode'
-      'qlimagesize'
-      'qlmarkdown'
-      'qlstephen'
-      'qlvideo'
-      'quicklook-csv'
-      'quicklook-json'
-      'readcube'
-      'r-app'
-      'rstudio'
-      'scriptql'
-      'skype'
-      'slack'
-      'suspicious-package'
-      'the-unarchiver'
-      'tripmode'
-      'vlc'
-      'vmware-fusion'
-      'xquartz'
-    )
-    # cask
-    local installed=`brew cask list`
 
-    for index in ${!desired_formulae[*]}
-    do
-      local formula=`echo ${desired_formulae[$index]} | cut -d' ' -f 1`
-      if [[ -z `echo "${installed}" | grep "^${formula}$"` ]]; then
-        missing_formulae=("${missing_formulae[@]}" "${desired_formulae[$index]}")
-      else
-        echo "Installed ${formula}"
-      fi
-    done
-
-    if [[ "$missing_formulae" ]]; then
-      list_formulae=$( printf "%s " "${missing_formulae[@]}" )
-
-      echo "Installing missing Homebrew formulae..."
-      brew cask install $list_formulae
-
-      [[ $? ]] && echo "$(tput setaf 2)Installed missing formulae ✔︎$(tput sgr0)"
-    fi
+#    local list_formulae
+#    local -a missing_formulae
+#    local -a desired_formulae=(
+#      'autoconf'
+#      'automake'
+#      'bash-completion'
+#      'bash'
+#      'binutils'
+#      'boost'
+#      'brew-file'
+#      'coreutils'
+#      'ctags'
+#      'diffutils'
+#      'findutils'
+#      'fontforge'
+#      'gawk'
+#      'gcc'
+#      'gnu-sed'
+#      'gnu-tar'
+#      'gnutls'
+#      'git'
+#      'gpg'
+#      'grep'
+#      'gzip'
+#      'jq'
+#      'less'
+#      'lua'
+#      'mas'
+#      'mysql'
+#      'nano'
+#      'nkf'
+#      'nodebrew'
+#      'openssl'
+#      'pandoc'
+#      'peco'
+#      'postgresql'
+#      'pyenv'
+#      'pyenv-virtualenv'
+#      'python'
+#      'python3'
+#      'qt'
+#      'ricty'
+#      'ruby-build'
+#      'rbenv'
+#      's3cmd'
+#      'screen'
+#      'source-highlight'
+#      'sqlite'
+#      'the_platinum_searcher'
+#      'tmux'
+#      'tree'
+#      'unzip'
+#      'wdiff'
+#      'wget'
+#    )
+#
+#    local installed=`brew list`
+#
+#    for index in ${!desired_formulae[*]}
+#    do
+#      local formula=`echo ${desired_formulae[$index]} | cut -d' ' -f 1`
+#      if [[ -z `echo "${installed}" | grep "^${formula}$"` ]]; then
+#        missing_formulae=("${missing_formulae[@]}" "${desired_formulae[$index]}")
+#      else
+#        echo "Installed ${formula}"
+#        [[ "${formula}" = "ricty" ]] && local installed_ricty=true
+#      fi
+#    done
+#
+#    if [[ "$missing_formulae" ]]; then
+#      list_formulae=$( printf "%s " "${missing_formulae[@]}" )
+#
+#      echo "Installing missing Homebrew formulae..."
+#      brew install $list_formulae
+#
+#      [[ $? ]] && echo "$(tput setaf 2)Installed missing formulae ✔︎$(tput sgr0)"
+#    fi
+#
+#    if [ -z "${installed_ricty}"  ]; then
+#      echo "Reload fonts. This could take a while..."
+#      local cellar=`brew --config | grep 'HOMEBREW_CELLAR' | cut -d' ' -f 2`
+#      find ${cellar}/ricty/*/share/fonts/Ricty*.ttf | xargs -I % cp % ~/Library/Fonts
+#      fc-cache -vf
+#    fi
+#
+#    local -a missing_formulae=()
+#    local -a desired_formulae=(
+#      '1password'
+#      'alfred'
+#      'appcleaner'
+#      'betterzip'
+#      'boxcryptor'
+#      'chrome-remote-desktop-host'
+#      'cooviewer'
+#      'coteditor'
+#      'dash'
+#      'docker'
+#      'dropbox'
+#      'evernote'
+#      'font-fontawesome'
+#      'grammarly'
+#      'google-photos-backup-and-sync'
+#      'google-chrome'
+#      'java8'
+##     'karabiner-elements'
+#      'kindle'
+#      'macs-fan-control'
+#      'mactex'
+#      'macvim'
+#      'qlcolorcode'
+#      'qlimagesize'
+#      'qlmarkdown'
+#      'qlstephen'
+#      'qlvideo'
+#      'quicklook-csv'
+#      'quicklook-json'
+#      'readcube'
+#      'r-app'
+#      'rstudio'
+#      'scriptql'
+#      'skype'
+#      'slack'
+#      'suspicious-package'
+#      'the-unarchiver'
+#      'tripmode'
+#      'vlc'
+#      'vmware-fusion'
+#      'xquartz'
+#    )
+#    # cask
+#    local installed=`brew cask list`
+#
+#    for index in ${!desired_formulae[*]}
+#    do
+#      local formula=`echo ${desired_formulae[$index]} | cut -d' ' -f 1`
+#      if [[ -z `echo "${installed}" | grep "^${formula}$"` ]]; then
+#        missing_formulae=("${missing_formulae[@]}" "${desired_formulae[$index]}")
+#      else
+#        echo "Installed ${formula}"
+#      fi
+#    done
+#
+#    if [[ "$missing_formulae" ]]; then
+#      list_formulae=$( printf "%s " "${missing_formulae[@]}" )
+#
+#      echo "Installing missing Homebrew formulae..."
+#      brew cask install $list_formulae
+#
+#      [[ $? ]] && echo "$(tput setaf 2)Installed missing formulae ✔︎$(tput sgr0)"
+#    fi
 
     echo "Cleanup Homebrew..."
     brew cleanup
