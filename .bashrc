@@ -2,6 +2,13 @@
 # bashrcとbash_profileを使い分ける
 #
 
+#
+# system bashrc
+#
+if [ -r "/etc/bashrc" ];then
+  source /etc/bashrc
+fi
+
 ##
 ## .bashrc再読み込み時のPATH重複追加を回避
 ##
@@ -28,13 +35,6 @@
 
 if [ -f ~/.brew_api_token ];then
   source ~/.brew_api_token
-fi
-
-#
-# Brew-fileのラッパー
-#
-if [ -f $(brew --prefix)/etc/brew-wrap ];then
-  source $(brew --prefix)/etc/brew-wrap
 fi
 
 #
@@ -94,23 +94,38 @@ export PAGER=less
 # -u:バックスペースやタブを制御文字として取り扱う
 # -q:EOFに着いた時に通り過ぎても音を鳴らさない
 
-export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
 export LESS='-q -N -M -i -R -F -X -g'
-# export LESS=" -R -X -F"
+# export LESS='-I -R -M -W -x2'
+if type -a source-highlight >& /dev/null;then
+  if type -a lesspipe >& /dev/null;then
+    export LESSOPEN='| ~/.config/terminal/lesspipe %s'
+  elif type -a src-hilite-lesspipe.sh >& /dev/null;then
+    export LESSOPEN='| src-hilite-lesspipe.sh %s'
+  fi
+fi
+# export LESSOPEN='| /usr/local/bin/src-hilite-lesspipe.sh %s'
 export LESSCHARSET='utf-8'
 
 alias less='less -m -N -g -i -J --underline-special --SILENT'
+
+# man with color
+export LESS_TERMCAP_mb=$(printf "\e[1;36m")
+export LESS_TERMCAP_md=$(printf "\e[1;36m")
+export LESS_TERMCAP_so=$(printf "\e[1;44;33m")
+export LESS_TERMCAP_us=$(printf "\e[1;32m")
+export LESS_TERMCAP_me=$(printf "\e[0m")
+export LESS_TERMCAP_se=$(printf "\e[0m")
+export LESS_TERMCAP_ue=$(printf "\e[0m")
+
 
 #
 # command alias
 #
 
 #
-# pyenvとHomebrewの共存用
+# pyenvやGNU/LinuxコマンドとHomebrewの共存用
 #
-#    alias brew="PATH=\"/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin\" brew"
-#    alias brew="env PATH=${PATH/\/Users\/ytamai\/\.pyenv\/shims:/} brew"
-
+alias brew='PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin brew'
 
 alias ..='cd ..'
 alias ls='gls --color=auto'
