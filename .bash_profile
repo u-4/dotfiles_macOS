@@ -23,6 +23,9 @@ export PATH="$HOME/.nodebrew/current/bin:$PATH"
 export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v "1.8"`
 PATH="${JAVA_HOME}/bin:${PATH}"
 
+# tcl-tk
+export PATH="/usr/local/opt/tcl-tk/bin:$PATH"
+
 #
 # GNU/Linux系列のコマンド用のPATH
 #
