@@ -31,5 +31,12 @@ $ ~/.dotfiles/dotfiles initialize
 $ ~/.dotfiles/dotfiles deploy
 ```
 
+
+## Set System Preferences using defaults function
+
+```
+$ ~/.dotfiles/dotfiles defaults
+```
+
 ## TODO
-* OS X settings
+* change messages
