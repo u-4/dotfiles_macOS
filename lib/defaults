@@ -767,7 +767,7 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false
 
 ###############################################################################
-# Google Chrome & Google Chrome Canary                                        #
+# Google Chrome                                                               #
 ###############################################################################
 
 # Disable the all too sensitive backswipe on trackpads
@@ -781,6 +781,21 @@ defaults write com.google.Chrome DisablePrintPreview -bool true
 
 # Expand the print dialog by default
 defaults write com.google.Chrome PMPrintingExpandedStateForPrint2 -bool true
+
+###############################################################################
+# Visual Studio Code by Microsoft                                             #
+###############################################################################
+
+#
+# VIM Extension
+#
+
+# To enable key-repeating execute the following in your Terminal and restart VS Code.
+
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false         # For VS Code
+defaults write com.microsoft.VSCodeInsiders ApplePressAndHoldEnabled -bool false # For VS Code Insider
+# defaults delete -g ApplePressAndHoldEnabled                                      # If necessary, reset global default
+
 
 ###############################################################################
 # Kill affected applications                                                  #
