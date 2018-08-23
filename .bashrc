@@ -57,8 +57,8 @@ fi
 # ls color solarized
 #
 
-if [ -f ~/.dircolors-solarized ];then
-  eval `/usr/local/opt/coreutils/libexec/gnubin/dircolors ~/.dircolors-solarized`
+if [ -f ~/.config/gls/dircolors-solarized ];then
+  eval `/usr/local/opt/coreutils/libexec/gnubin/dircolors ~/.config/gls/dircolors-solarized`
 fi
 
 
