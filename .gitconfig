@@ -19,3 +19,14 @@
 	templatedir = ~/.git_template
 [alias]
   graph = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
+  co = checkout
+  cm = commit
+  st = status
+  br = branch -av
+  ft = fetch --prune
+  uncommit = reset HEAD^
+  hist = log --graph --stat
+  l = log --graph --all --format=format:'%C(bold red)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold blue)― %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+  ignore = !"f() { local s=$1; shift; while [ $# -gt 0 ]; do s="$s,$1"; shift; done; curl "http://www.gitignore.io/api/$s"; }; f"
+  delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
+  sco = !git checkout $(git branch | peco)
