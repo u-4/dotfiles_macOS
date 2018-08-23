@@ -165,6 +165,7 @@ alias vi="vim"
 #
 # reset path
 # https://qiita.com/key-amb/items/ce39b0c85b30888e1e3b
+# .bashrcの末尾につけておくこと
 
 _path=""
 for _p in $(echo $PATH | tr ':' ' '); do
