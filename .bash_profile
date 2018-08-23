@@ -44,5 +44,5 @@ MANPATH="/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH"
 MANPATH="/usr/local/opt/gnu-tar/libexec/gnuman:$MANPATH"
 MANPATH="/usr/local/opt/grep/libexec/gnuman:$MANPATH"
 
-# .bash_profileの最後
+# .bash_profile最後に.bashrcの読み込み設定
 test -r ~/.bashrc && . ~/.bashrc
