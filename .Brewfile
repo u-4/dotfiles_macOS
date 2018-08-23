@@ -37,6 +37,7 @@ brew "libssh2"
 brew "libgit2"
 brew "x265"
 brew "libheif"
+brew "luarocks"
 brew "mas"
 brew "mecab"
 brew "mecab-ipadic"
@@ -109,10 +110,10 @@ cask "tripmode"
 cask "visual-studio-code"
 cask "vlc"
 cask "vmware-fusion"
-mas "Be Focused Pro", id: 961632517
 mas "Cyberduck", id: 409222199
 mas "Day One", id: 1055511498
 mas "Keynote", id: 409183694
 mas "LINE", id: 539883307
 mas "Pages", id: 409201541
+mas "WebPomodoro", id: 1258530160
 mas "Xcode", id: 497799835
