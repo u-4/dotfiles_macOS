@@ -162,6 +162,10 @@ alias egrep='egrep --color=auto'
 
 alias vi="vim"
 
+alias youtubemp4="youtube-dl -f mp4"
+alias youtubem4a="youtube-dl -x --audio-format m4a"
+alias youtubemp3="youtube-dl -x --audio-format mp3"
+
 #
 # reset path
 # https://qiita.com/key-amb/items/ce39b0c85b30888e1e3b
