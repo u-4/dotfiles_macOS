@@ -67,6 +67,7 @@ brew "tree"
 brew "unzip"
 brew "wdiff"
 brew "wget"
+brew "youtube-dl"
 brew "sanemat/font/ricty", args: ["with-powerline"]
 cask "1password"
 cask "alfred"
