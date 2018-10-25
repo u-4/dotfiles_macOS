@@ -91,7 +91,6 @@ cask "kindle"
 cask "macs-fan-control"
 cask "mactex"
 cask "macvim"
-cask "onedrive"
 cask "qlcolorcode"
 cask "qlimagesize"
 cask "qlmarkdown"
@@ -111,6 +110,7 @@ cask "tripmode"
 cask "visual-studio-code"
 cask "vlc"
 cask "vmware-fusion"
+mas "Be Focused Pro", id: 961632517
 mas "Cyberduck", id: 409222199
 mas "Day One", id: 1055511498
 mas "Keynote", id: 409183694
