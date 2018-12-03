@@ -162,9 +162,13 @@ alias egrep='egrep --color=auto'
 
 alias vi="vim"
 
+# alias for youtube-dl
 alias youtubemp4="youtube-dl -f mp4"
 alias youtubem4a="youtube-dl -x --audio-format m4a"
 alias youtubemp3="youtube-dl -x --audio-format mp3"
+
+# ripgrep from VSCode
+alias rg="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/node_modules.asar.unpacked/vscode-ripgrep/bin/rg"
 
 #
 # reset path
