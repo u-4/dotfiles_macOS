@@ -1,4 +1,4 @@
-memodir = "/Users/ytamai/.memo/_posts"
+memodir = "/Users/ytamai/.memo/"
 editor = "code"
 column = 20
 selectcmd = "peco"
