@@ -12,6 +12,14 @@ eval "$(pyenv init -)"
 # rbenv
 eval "$(rbenv init -)"
 
+# Go lang
+# インストール場所をいじらなければ関係ない？
+# export GOROOT="go env GOROOT" or "/usr/local/opt/go/libexec"
+
+export GOPATH=$HOME/.go
+export PATH=$PATH:$GOPATH/bin:/usr/local/opt/go/libexec/bin
+
+
 # PATHのexportは.bash_profileで行う
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
