@@ -1,0 +1,9 @@
+memodir = "/Users/ytamai/.memo/_posts"
+editor = "code"
+column = 20
+selectcmd = "peco"
+grepcmd = "/Applications/Visual\\ Studio\\ Code.app/Contents/Resources/app/node_modules/vscode-ripgrep/bin/rg -n --no-heading -S ${PATTERN} ${FILES}"
+assetsdir = ""
+pluginsdir = "/Users/ytamai/.config/.memo/plugins"
+templatedirfile = ""
+templatebodyfile = ""
