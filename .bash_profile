@@ -19,6 +19,8 @@ eval "$(rbenv init -)"
 export GOPATH=$HOME/.go
 export PATH=$PATH:$GOPATH/bin:/usr/local/opt/go/libexec/bin
 
+# Microsoft .Net Core Runtime
+export PATH=/usr/local/share/dotnet:$PATH
 
 # PATHのexportは.bash_profileで行う
 export PATH="$PYENV_ROOT/bin:$PATH"
