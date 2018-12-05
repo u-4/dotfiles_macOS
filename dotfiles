@@ -5,6 +5,7 @@ DOT_DIRECTORY="${HOME}/.dotfiles"
 DOT_TARBALL="https://github.com/u-4/dotfiles/tarball/master"
 REMOTE_URL="git@github.com:u-4/dotfiles.git"
 
+# コマンドの存在確認用
 has() {
   type "$1" > /dev/null 2>&1
 }
@@ -90,7 +91,12 @@ link_files() {
 # Initialize処理
 initialize() {
   run_brew
-
+# install im-select for VSCode
+if has "im-select"; then
+  :
+else
+  curl -sL https://raw.githubusercontent.com/daipeihust/im-select/master/install_mac.sh | sh 
+fi
 #  [ ! -d ${HOME}/.zplug ] && git clone https://github.com/b4b4r07/zplug ${HOME}/.zplug
 #  [ ! -d ${HOME}/.tmux/plugins/tpm ] && git clone https://github.com/tmux-plugins/tpm ${HOME}/.tmux/plugins/tpm
 
