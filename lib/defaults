@@ -47,7 +47,7 @@ defaults write com.macpomodoro NSRequiresAquaSystemAppearance -bool Yes
 defaults write com.bitdefender.antivirusformac NSRequiresAquaSystemAppearance -bool Yes
 defaults write com.evernote.Evernote NSRequiresAquaSystemAppearance -bool Yes
 defaults write com.apple.Photos NSRequiresAquaSystemAppearance -bool Yes
-defaults write com.apple.iTunes NSRequiresAquaSystemAppearance -bool Yes
+defaults write com.runningwithcrayons.Alfred-3 NSRequiresAquaSystemAppearance -bool Yes
 
 # Always show scrollbars
 # defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
