@@ -35,14 +35,19 @@ defaults write -g AppleAquaColorVariant 6
 # defaults write -g AppleInterfaceStyle -string "Dark"
 
 # Mojave Dark Mode on
-defaults write -g NSRequiresAquaSystemAppearance -bool Yes
+defaults write -g NSRequiresAquaSystemAppearance -bool No
 
 # Selected Apps in light mode
-defaults write com.apple.systempreferences NSRequiresAquaSystemAppearance -bool NO
-defaults write com.apple.Notes NSRequiresAquaSystemAppearance -bool NO
-defaults write com.apple.reminders NSRequiresAquaSystemAppearance -bool NO
-defaults write com.apple.mail NSRequiresAquaSystemAppearance -bool NO
-defaults write com.apple.iTunes NSRequiresAquaSystemAppearance -bool NO
+defaults write com.apple.systempreferences NSRequiresAquaSystemAppearance -bool YES
+defaults write com.apple.Notes NSRequiresAquaSystemAppearance -bool Yes
+defaults write com.apple.reminders NSRequiresAquaSystemAppearance -bool Yes
+defaults write com.apple.mail NSRequiresAquaSystemAppearance -bool Yes
+defaults write com.apple.iTunes NSRequiresAquaSystemAppearance -bool Yes
+defaults write com.macpomodoro NSRequiresAquaSystemAppearance -bool Yes
+defaults write com.bitdefender.antivirusformac NSRequiresAquaSystemAppearance -bool Yes
+defaults write com.evernote.Evernote NSRequiresAquaSystemAppearance -bool Yes
+defaults write com.apple.Photos NSRequiresAquaSystemAppearance -bool Yes
+defaults write com.apple.iTunes NSRequiresAquaSystemAppearance -bool Yes
 
 # Always show scrollbars
 # defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
@@ -350,8 +355,8 @@ defaults write com.apple.dock largesize -int 96
 # Change minimize/maximize window effect
 # defaults write com.apple.dock mineffect -string "scale"
 
-# Double click title bar to minimize the window
-defaults write -g AppleActionOnDoubleClick -string "Minimize"
+# Double click title bar to Minimize/zoom the window
+defaults write -g AppleActionOnDoubleClick -string "zoom"
 
 # Minimize windows into their application’s icon
 defaults write com.apple.dock minimize-to-application -bool true
