@@ -260,27 +260,6 @@
                         ]
                     },
                     {
-                        "description": "Control-j to Return",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "j",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "control"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "return_or_enter"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "Control-[ to ESC (Emacs-modeと被り)",
                         "manipulators": [
                             {
