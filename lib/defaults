@@ -34,21 +34,25 @@ defaults write -g AppleAquaColorVariant 6
 # Darken the Menu bar and Dock
 # defaults write -g AppleInterfaceStyle -string "Dark"
 
-# Mojave Dark Mode on
-defaults write -g NSRequiresAquaSystemAppearance -bool No
+# # Mojave Dark Mode on
+# # 対応していないアプリや醜くなるアプリが多くて使いにくいので使用中止。
+# defaults write -g NSRequiresAquaSystemAppearance -bool No
 
-# Selected Apps in light mode
-defaults write com.apple.systempreferences NSRequiresAquaSystemAppearance -bool YES
-defaults write com.apple.Notes NSRequiresAquaSystemAppearance -bool Yes
-defaults write com.apple.reminders NSRequiresAquaSystemAppearance -bool Yes
-defaults write com.apple.mail NSRequiresAquaSystemAppearance -bool Yes
-defaults write com.apple.iTunes NSRequiresAquaSystemAppearance -bool Yes
-defaults write com.macpomodoro NSRequiresAquaSystemAppearance -bool Yes
-defaults write com.bitdefender.antivirusformac NSRequiresAquaSystemAppearance -bool Yes
-defaults write com.evernote.Evernote NSRequiresAquaSystemAppearance -bool Yes
-defaults write com.apple.Photos NSRequiresAquaSystemAppearance -bool Yes
-defaults write com.runningwithcrayons.Alfred-3 NSRequiresAquaSystemAppearance -bool Yes
-defaults write com.runningwithcrayons.Alfred-Preferences-3 NSRequiresAquaSystemAppearance -bool Yes
+# # Selected Apps in light mode
+# defaults write com.apple.systempreferences NSRequiresAquaSystemAppearance -bool YES
+# defaults write com.apple.Notes NSRequiresAquaSystemAppearance -bool Yes
+# defaults write com.apple.reminders NSRequiresAquaSystemAppearance -bool Yes
+# defaults write com.apple.mail NSRequiresAquaSystemAppearance -bool Yes
+# defaults write com.apple.iTunes NSRequiresAquaSystemAppearance -bool Yes
+# defaults write com.macpomodoro NSRequiresAquaSystemAppearance -bool Yes
+# defaults write com.bitdefender.antivirusformac NSRequiresAquaSystemAppearance -bool Yes
+# defaults write com.evernote.Evernote NSRequiresAquaSystemAppearance -bool Yes
+# defaults write com.apple.Photos NSRequiresAquaSystemAppearance -bool Yes
+# defaults write com.runningwithcrayons.Alfred-3 NSRequiresAquaSystemAppearance -bool Yes
+# defaults write com.runningwithcrayons.Alfred-Preferences-3 NSRequiresAquaSystemAppearance -bool Yes
+# defaults write com.google.Chrome NSRequiresAquaSystemAppearance -bool YES
+# defaults write com.google.musicmanager.launcher NSRequiresAquaSystemAppearance -bool YES
+# defaults write com.apple.AddressBook NSRequiresAquaSystemAppearance -bool YES
 
 # Always show scrollbars
 # defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
@@ -799,6 +803,14 @@ defaults write com.google.Chrome DisablePrintPreview -bool true
 defaults write com.google.Chrome PMPrintingExpandedStateForPrint2 -bool true
 
 ###############################################################################
+# Google Backup and Sync                                                      #
+###############################################################################
+
+# set App language en
+defaults write -app 'Backup and Sync' AppleLanguages "(en, ja)"
+
+
+###############################################################################
 # Visual Studio Code by Microsoft                                             #
 ###############################################################################
 
@@ -809,9 +821,11 @@ defaults write com.google.Chrome PMPrintingExpandedStateForPrint2 -bool true
 # To enable key-repeating execute the following in your Terminal and restart VS Code.
 
 defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false         # For VS Code
-defaults write com.microsoft.VSCodeInsiders ApplePressAndHoldEnabled -bool false # For VS Code Insider
+# defaults write com.microsoft.VSCodeInsiders ApplePressAndHoldEnabled -bool false # For VS Code Insider
 # defaults delete -g ApplePressAndHoldEnabled                                      # If necessary, reset global default
 
+# set App language en
+defaults write -app 'Visual Studio Code' AppleLanguages "(en, ja)"
 
 ###############################################################################
 # Kill affected applications                                                  #
