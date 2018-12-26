@@ -6,7 +6,7 @@
 # system bashrc
 #
 if [ -r "/etc/bashrc" ];then
-  source /etc/bashrc
+    source /etc/bashrc
 fi
 
 ##
@@ -34,7 +34,7 @@ fi
 #
 
 if [ -f ~/.brew_api_token ];then
-  source ~/.brew_api_token
+    source ~/.brew_api_token
 fi
 
 #
@@ -42,15 +42,15 @@ fi
 #
 
 if [ -f ~/.bash-powerline.sh ];then
-  source ~/.bash-powerline.sh
+    source ~/.bash-powerline.sh
 fi
 
 #
 # bash-completion
-# 
+#
 
 if [ -f `brew --prefix`/etc/bash_completion ]; then
-  . `brew --prefix`/etc/bash_completion
+    . `brew --prefix`/etc/bash_completion
 fi
 
 #
@@ -58,68 +58,15 @@ fi
 #
 
 if [ -f ~/.config/gls/dircolors-solarized ];then
-  eval `/usr/local/opt/coreutils/libexec/gnubin/dircolors ~/.config/gls/dircolors-solarized`
+    eval `/usr/local/opt/coreutils/libexec/gnubin/dircolors ~/.config/gls/dircolors-solarized`
 fi
 
 
-#
-# 言語設定
-#
 
-export LANG=ja_JP.UTF-8
-export LC_CTYPE=ja_JP.UTF-8
-export LC_NUMERIC=ja_JP.UTF-8
-export LC_TIME=ja_JP.UTF-8
-export LC_MESSAGES=ja_JP.UTF-8
-export LC_MONETARY=ja_JP.UTF-8
-export LC_COLLATE=ja_JP.UTF-8
-
-#
-# less関連
-#
-
-export PAGER=less
-# LESS のオプションたち
-# -N:行番号を追加
-# -M:見ている行数、パーセンテージ、ファイル名を表示する
-# -i:検索時に大文字が入っていなければ大文字小文字を区別しない
-# -R:ANSI Color Escape Sequenceを色表示する
-# -S:1行が画面に入りきらない場合に折り返さない
-# -s:空行が複数ある時に表示上は1行にしてくれる
-# -F:行数が短くて1画面に収まる場合はlessをすぐに終了
-# -X:less終了時に画面をクリアしない
-# -g:単語検索時にすべての該当単語ではなく現在フォーカスのあるもののみ反転表示
-# -j（数字）:検索時に検索対象単語が上から（数字）行目に表示される
-# -p （パターン）:パターンにマッチした行を1行目に表示する
-# -u:バックスペースやタブを制御文字として取り扱う
-# -q:EOFに着いた時に通り過ぎても音を鳴らさない
-
-export LESS='-q -N -M -i -R -F -X -g'
-# export LESS='-I -R -M -W -x2'
-if type -a source-highlight >& /dev/null;then
-  if type -a lesspipe >& /dev/null;then
-    export LESSOPEN='| ~/.config/terminal/lesspipe %s'
-  elif type -a src-hilite-lesspipe.sh >& /dev/null;then
-    export LESSOPEN='| src-hilite-lesspipe.sh %s'
-  fi
-fi
-# export LESSOPEN='| /usr/local/bin/src-hilite-lesspipe.sh %s'
-export LESSCHARSET='utf-8'
-
-alias less='less -m -N -g -i -J --underline-special --SILENT'
-
-# man with color
-export LESS_TERMCAP_mb=$(printf "\e[1;36m")
-export LESS_TERMCAP_md=$(printf "\e[1;36m")
-export LESS_TERMCAP_so=$(printf "\e[1;44;33m")
-export LESS_TERMCAP_us=$(printf "\e[1;32m")
-export LESS_TERMCAP_me=$(printf "\e[0m")
-export LESS_TERMCAP_se=$(printf "\e[0m")
-export LESS_TERMCAP_ue=$(printf "\e[0m")
 
 
 #
-# command alias
+# command alias and function
 #
 
 #
@@ -141,8 +88,8 @@ alias lu='ls -ltur'        # Sort by and show access time, most recent last
 alias lt='ls -ltr'         # Sort by date, most recent last
 alias lr='ls -lR'          # Recursive ls
 
-    # The ubiquitous 'll': directories first, with alphanumeric sorting:
-    # alias ll='ls -lv --group-directories-first'
+# The ubiquitous 'll': directories first, with alphanumeric sorting:
+# alias ll='ls -lv --group-directories-first'
 
 alias cp="cp -i"
 alias mv="mv -i"
@@ -153,12 +100,12 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-    # Use if colordiff exists
-    # if has 'colordiff'; then
-    #     alias diff='colordiff -u'
-    # else
-    #     alias diff='diff -u'
-    # fi
+# Use if colordiff exists
+# if has 'colordiff'; then
+#     alias diff='colordiff -u'
+# else
+#     alias diff='diff -u'
+# fi
 
 alias vi="vim"
 
@@ -171,25 +118,38 @@ alias youtubemp3="youtube-dl -x --audio-format mp3"
 alias rg="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/node_modules.asar.unpacked/vscode-ripgrep/bin/rg"
 
 #
+# stty
+#
+
+tty -s && stty stop undef # C-s
+tty -s && stty start undef # C-q
+if [[ "$OSTYPE" =~ "darwin" ]];then
+    tty -s && stty discard undef # C-o
+fi
+
+
+#
 # reset path
 # https://qiita.com/key-amb/items/ce39b0c85b30888e1e3b
 # .bashrcの末尾につけておくこと
 
 _path=""
 for _p in $(echo $PATH | tr ':' ' '); do
-  case ":${_path}:" in
-    *:"${_p}":* )
-      ;;
-    * )
-      if [ "$_path" ]; then
-        _path="$_path:$_p"
-      else
-        _path=$_p
-      fi
-      ;;
-  esac
+    case ":${_path}:" in
+        *:"${_p}":* )
+        ;;
+        * )
+            if [ "$_path" ]; then
+                _path="$_path:$_p"
+            else
+                _path=$_p
+            fi
+        ;;
+    esac
 done
 PATH=$_path
 
 unset _p
 unset _path
+
+
