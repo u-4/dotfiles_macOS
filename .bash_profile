@@ -16,10 +16,6 @@ export LC_COLLATE=ja_JP.UTF-8
 # texinfo
 export PATH="/usr/local/opt/texinfo/bin:$PATH"
 
-# pyenv関連
-export PYENV_ROOT="$HOME/.pyenv"
-eval "$(pyenv init -)"
-
 # rbenv
 eval "$(rbenv init -)"
 
@@ -32,10 +28,6 @@ export PATH=$PATH:$GOPATH/bin:/usr/local/opt/go/libexec/bin
 
 # Microsoft .Net Core Runtime
 export PATH=/usr/local/share/dotnet:$PATH
-
-# PATHのexportは.bash_profileで行う
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
 
 # nodebrewのPATH
 export PATH=$HOME/.nodebrew/current/bin:$PATH
@@ -128,6 +120,19 @@ export HISTTIMEFORMAT='%Y.%m.%d %T: ' # historyに時間を追加
 #
 
 [ -f ~/.dotfiles/lib/enhancd/init.sh ] && source ~/.dotfiles/lib/enhancd/init.sh
+
+#
+# python3
+#
+
+# homebrewのpython3を`python`で使用するため
+export PATH=$(brew --prefix)/opt/python3/libexec/bin:$PATH
+
+# pipvenvなどで.venvをプロジェクトディレクトリ以下に作成するために
+export PIPENV_VENV_IN_PROJECT=True
+
+# pipenvの補完機能
+eval "$(pipenv --completion)"
 
 # .bash_profile最後に.bashrcの読み込み設定
 test -r ~/.bashrc && . ~/.bashrc
