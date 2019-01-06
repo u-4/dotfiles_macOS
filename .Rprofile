@@ -48,6 +48,9 @@ options(tibble.print_min=30L)
 # Suppress annoying function
 options(readr.num_columns=0L)
 
+# print numeric values in fixed: default scipen=0
+options(scipen=100)
+
 # 
 # Font
 # 
@@ -141,6 +144,10 @@ setHook("persp",    get("familyset_hook", pos="JapanEnv"));
 ## ggplot2でのフォント設定
 ggplot2::theme_set(ggplot2::theme_bw(base_family="sans"))
 # デフォルトのtheme_bwだけに設定している
+
+## ggplot2の色設定
+options(ggplot2.continuous.colour = "viridis",
+        ggplot2.continuous.fill = "viridis")
 
 ## ggpubrでのフォント設定
 # ggXXX(..., ..., font.family = "sans")
