@@ -2,9 +2,7 @@
 # .R/.Rprofile
 #
 
-
-# # test
-# print("user profile")
+message("\n*** Loading user .Rprofile (~/.Rprofile) ***\n")
 
 # package sync on Dropbox
 .libPaths("/Users/ytamai/Dropbox/.R/library")
@@ -29,12 +27,9 @@ options(warn=1,
         warnPartialMatchAttr=TRUE,
         warnPartialMatchDollar=TRUE)
 
-# ## 起動時にロードするパッケージを追加→完全に環境固まったら考えよう
-# ## tidyverseとか色々だけど、ある程度明示しないと他人に見せる時に困るし。
-# local({
-#   pkgs <- getOption("defaultPackages");
-#   options(defaultPackages=c(pkgs, "lattice", "car"));
-# });
+# 起動時にロードするパッケージを追加
+# library(tidyverse)と記載すると後からdefaultPackagesが読み込まれるのでパスが上書きされる
+options(defaultPackages = c(getOption("defaultPackages"), "tidyverse"))
 
 # Show a summary of the call stack
 options(showWarnCalls=TRUE, showErrorCalls=TRUE)
@@ -193,30 +188,40 @@ options(ggplot2.continuous.colour = "viridis",
 #     }, error=warning)
 # })
 # 
-# .First = function() {
-#     if (interactive()) {
-#         cran = c('tidyverse', 'devtools', 'extrafont')
-#         github = c()
-#         options(defaultPackages=c(getOption('defaultPackages'), cran, github))
-#         if (.Platform$GUI != 'AQUA' && Sys.getenv('EMACS') == '') {
-#             utils::loadhistory(file=Sys.getenv('R_HISTFILE'))
-#         }
-#         print(utils::sessionInfo(), locale=FALSE)
-#         cat(date(), '\n')
-#         cat(getwd(), '\n')
-#         cat('Loading:', cran, github, '\n')
-#     }
-# }
-# 
-# .Last = function() {try({
-#     if (interactive()) {
-#         if (.Platform$GUI != 'AQUA' && Sys.getenv('EMACS') == '') {
-#             utils::savehistory(file=Sys.getenv('R_HISTFILE'))
-#         }
-#         print(ls(envir=globalenv(), all.names=TRUE))
-#         print(utils::sessionInfo(), locale=FALSE)
-#     }
-# })}
+
+
+#
+# Record sessionInfo automatically
+#
+
+# https://rviews.rstudio.com/2017/04/19/r-for-enterprise-understanding-r-s-startup/
+# Reproducibility is a critical part of any analysis done in R. One challenge for reproducible scripts and documents is tracking the version of R packages used during an analysis.
+# The following code can be added to a .Rprofile file within an RStudio project to automatically log the sessionInfo() after every RStudio session.
+# This log could be referenced if an analysis needs to be run at a later date and fails due to a package discrepancy.
+
+.Last <- function(){
+  if (interactive()) {
+    
+    ## check to see if we're in an RStudio project (requires the rstudioapi package)
+    if (!requireNamespace("rstudioapi"))
+      return(NULL)
+    pth <- rstudioapi::getActiveProject()
+    if (is.null(pth))
+      return(NULL)
+    
+    ## append date + sessionInfo to a file called sessionInfoLog
+    cat("Recording session info into the project's sesionInfoLog file...")
+    info <-  capture.output(sessionInfo())
+    info <- paste("\n----------------------------------------------",
+                  paste0('Session Info for ', Sys.time()),
+                  paste(info, collapse = "\n"),
+                  sep  = "\n")
+    f <- file.path(pth, "sessionInfoLog")
+    cat(info, file = f, append = TRUE)
+  }
+}
+
+message("\n*** Successfully loaded user .Rprofile ***\n")
 
 # source projectdir/.Rprofile
 if (Sys.getenv("R_USER") != getwd()) {
