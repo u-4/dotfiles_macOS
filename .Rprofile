@@ -203,12 +203,14 @@ options(ggplot2.continuous.colour = "viridis",
   if (interactive()) {
     
     ## check to see if we're in an RStudio project (requires the rstudioapi package)
-    if (!requireNamespace("rstudioapi"))
+    if (Sys.getenv("RSTUDIO") != "1") {
       return(NULL)
-    pth <- rstudioapi::getActiveProject()
-    if (is.null(pth))
+    } else {
+      pth <- rstudioapi::getActiveProject()
+    }
+    if (is.null(pth)) {
       return(NULL)
-    
+    } else {
     ## append date + sessionInfo to a file called sessionInfoLog
     cat("Recording session info into the project's sesionInfoLog file...")
     info <-  capture.output(sessionInfo())
@@ -218,16 +220,18 @@ options(ggplot2.continuous.colour = "viridis",
                   sep  = "\n")
     f <- file.path(pth, "sessionInfoLog")
     cat(info, file = f, append = TRUE)
+    }
   }
 }
 
 message("\n*** Successfully loaded user .Rprofile ***\n")
 
 # source projectdir/.Rprofile
-if (Sys.getenv("R_USER") != getwd()) {
-  if (file.exists(paste0(getwd(), "/.Rprofile"))) {
-    source(paste0(getwd(), "/.Rprofile"))
+if (Sys.getenv("R_USER") != "") {
+  if (Sys.getenv("R_USER") != getwd()) {
+    if (file.exists(paste0(getwd(), "/.Rprofile"))) {
+      source(paste0(getwd(), "/.Rprofile"))
+    }
   }
 }
-
 
