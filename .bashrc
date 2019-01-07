@@ -127,6 +127,11 @@ if [[ "$OSTYPE" =~ "darwin" ]];then
     tty -s && stty discard undef # C-o
 fi
 
+#
+# R
+#
+
+alias R='R --no-save --no-restore-data'
 
 #
 # reset path
