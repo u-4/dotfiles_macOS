@@ -29,7 +29,14 @@ options(warn=1,
 
 # 起動時にロードするパッケージを追加
 # library(tidyverse)と記載すると後からdefaultPackagesが読み込まれるのでパスが上書きされる
-options(defaultPackages = c(getOption("defaultPackages"), "tidyverse"))
+# requireだとWarningが入ってしまうのでrequireNamespaceを利用
+
+local({
+  original_default <- getOption("defaultPackages")
+  pkgs <- c("tidyverse")
+  options(defaultPackages = c(original_default, pkgs[sapply(pkgs, function(x) {return(ifelse((requireNamespace(x, quietly = TRUE)), TRUE, FALSE))})]))
+})
+
 
 # Show a summary of the call stack
 options(showWarnCalls=TRUE, showErrorCalls=TRUE)
