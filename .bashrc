@@ -131,6 +131,13 @@ fi
 # R
 #
 
+# create directory for installed packages
+if [ ! -d ~/.R_LIBS ]; then
+    mkdir ~/.R_LIBS
+    echo "Created '~/.R_LIBS' for R_LIBS_USER."
+fi
+
+# alias for command line
 alias R='R --no-save --no-restore-data'
 
 #
