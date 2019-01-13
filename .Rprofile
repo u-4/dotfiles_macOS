@@ -99,14 +99,16 @@ setHook(packageEvent("grDevices", "onLoad"), function(...) {
   ## Mac OS X 環境のフォント設定
   if (capabilities("aqua")) {
     grDevices::quartzFonts(
-      serif = grDevices::quartzFont(c("Hiragino Mincho Pro W3",
-                                      "Hiragino Mincho Pro W6",
-                                      "Hiragino Mincho Pro W3",
-                                      "Hiragino Mincho Pro W6")),
-      sans  = grDevices::quartzFont(c("Hiragino Kaku Gothic Pro W3",
-                                      "Hiragino Kaku Gothic Pro W6",
-                                      "Hiragino Kaku Gothic Pro W3",
-                                      "Hiragino Kaku Gothic Pro W6"))
+      serif = grDevices::quartzFont(c("Hiragino Mincho Pro W3", # 標準
+                                      "Hiragino Mincho Pro W6", # ボールド
+                                      "Hiragino Mincho Pro W3", # イタリック
+                                      "Hiragino Mincho Pro W6"  # ボールドイタリック
+                                      )),
+      sans  = grDevices::quartzFont(c("Hiragino Kaku Gothic Pro W3", # 標準
+                                      "Hiragino Kaku Gothic Pro W6", # ボールド
+                                      "Hiragino Kaku Gothic Pro W3", # イタリック
+                                      "Hiragino Kaku Gothic Pro W6"  # ボールドイタリック
+                                      ))
     );
   }
   
@@ -162,53 +164,6 @@ if (requireNamespace("ggplot2", quietly = TRUE)) {
   options(ggplot2.continuous.colour = "viridis",
           ggplot2.continuous.fill = "viridis")
 }
-
-
-## ggpubrでのフォント設定
-# ggXXX(..., ..., font.family = "sans")
-# で個別対応か。
-
-# # Font（オリジナル）→うまくいかないので諦めて手動設定に
-# setHook(packageEvent("grDevices", "onLoad"), function(...) {
-#     grDevices::pdfFonts(
-#         serif= grDevices::pdfFonts()$Palatino,
-#         mincho= grDevices::pdfFonts()$Japan1,
-#         gothic= grDevices::pdfFonts()$Japan1GothicBBB
-#     )
-#     grDevices::pdf.options(family="serif")
-#     if (capabilities("aqua")) {
-#         .styles = c('', ' Bold', ' Italic', ' Bold Italic')
-#         grDevices::quartzFonts(
-#             serif=  grDevices::quartzFont(
-#                     paste0('Noto Serif', .styles)),
-#             sans=   grDevices::quartzFont(
-#                     paste0('Source Sans Pro', .styles)),
-#             mono=   grDevices::quartzFont(
-#                     paste0('Ubuntu Mono', .styles)),
-#             mincho= grDevices::quartzFont(
-#                     paste0("Hiragino Mincho ProN W", c(3, 6, 3, 6))),
-#             gothic= grDevices::quartzFont(
-#                     paste0("Hiragino Kaku Gothic ProN W", c(3, 6, 3, 6)))
-#         )
-#         grDevices::quartz.options(family='sans')  # does not work
-#         attach(NULL, name="QuartzEnv")
-#         assign("set_family", function() {
-#             if (names(dev.cur()) == "quartz") {par(family="sans")}
-#         }, pos="QuartzEnv")
-#         setHook("plot.new", get("set_family", pos="QuartzEnv"))
-#     }
-# })
-# 
-# setHook(packageEvent("extrafont", "attach"), function(...) {
-#     if (is.null(extrafont::fonts())) {return(invisible())}
-#     tryCatch({
-#         grDevices::pdfFonts(
-#           sans= grDevices::pdfFonts()$`Source Sans Pro`,
-#           mono= grDevices::pdfFonts()$`Ubuntu Mono`)
-#     }, error=warning)
-# })
-# 
-
 
 #
 # Record sessionInfo automatically
