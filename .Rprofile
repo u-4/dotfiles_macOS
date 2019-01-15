@@ -31,18 +31,16 @@ if (!dir.exists(file.path("~", ".R_LIBS"))) {
 
 # 起動時にロードするパッケージを追加
 # library(tidyverse)と記載すると後からdefaultPackagesが読み込まれるのでパスが上書きされる
-# .libpaths()およびR_LIBS_USERが適切に設定されておらず、デフォルトの場所にインストールされているとsearch()での順番がおかしくなる？
-# そういう問題でもなくなぜかtidyverse分などが先に読み込まれる……。とりあえず諦める方針に。
 
-# local({
-#   if (!file.exists(file.path(getwd(), "packrat", "init.R"))) {
-#     original_default <- getOption("defaultPackages")
-#     pkgs <- c("tidyverse", "magrittr", "viridis")
-#     pkgs <- pkgs[sapply(pkgs, function(x) {return((suppressMessages(suppressWarnings(require(x, character.only = TRUE)))))})]
-#     options(defaultPackages = c(original_default, pkgs))
-#     getOption("defaultPackages")
-#   }
-# })
+local({
+  if (!file.exists(file.path(getwd(), "packrat", "init.R"))) {
+    original_default <- getOption("defaultPackages")
+    pkgs <- c("tidyverse", "magrittr", "viridis")
+    pkgs <- pkgs[sapply(pkgs, function(x) {return(ifelse((requireNamespace(x, quietly = TRUE)), TRUE, FALSE))})]
+    options(defaultPackages = c(original_default, pkgs))
+    # getOption("defaultPackages")
+  }
+})
 
 # Show a summary of the call stack
 options(showWarnCalls=TRUE, showErrorCalls=TRUE)
@@ -70,7 +68,6 @@ if(capabilities("aqua")) {
 
 ## グラフィックスデバイスにフォント設定フックを追加
 setHook(packageEvent("grDevices", "onLoad"), function(...) {
-  
   ## Windows 環境のフォント設定
   if (.Platform$OS.type == "windows") {
     
@@ -95,7 +92,6 @@ setHook(packageEvent("grDevices", "onLoad"), function(...) {
       gothic = grDevices::pdfFonts()$Japan1GothicBBB
     );
   }
-  
   ## Mac OS X 環境のフォント設定
   if (capabilities("aqua")) {
     grDevices::quartzFonts(
@@ -201,10 +197,7 @@ message("\n*** Successfully loaded user .Rprofile ***\n")
 
 # source projectdir/.Rprofile
 # R --vanilla returns "" to Sys.getenv("R_USER")
-if (Sys.getenv("R_USER", unset = getwd()) != getwd()) {
-  if (file.exists(file.path(getwd(), ".Rprofile"))) {
-    source(file.path(getwd(), ".Rprofile"))
-  }
+if ((Sys.getenv("R_USER", unset = getwd()) != getwd()) && (file.exists(file.path(getwd(), ".Rprofile")))) {
+  source(file.path(getwd(), ".Rprofile"))
 }
-
 
