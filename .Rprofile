@@ -1,7 +1,7 @@
 #
 # .R/.Rprofile
 #
-message("\n*** Loading user .Rprofile (~/.Rprofile) ***\n")
+message("\n*** Loading user .Rprofile (~/.Rprofile) ***")
 
 # 主に以下を参考
 # https://github.com/heavywatal/rwtl/blob/master/.R/.Rprofile
@@ -23,11 +23,13 @@ options(warn=1,
         warnPartialMatchAttr=TRUE,
         warnPartialMatchDollar=TRUE)
 
-# set .libPaths
-if (!dir.exists(file.path("~", ".R_LIBS"))) {
-  dir.create(file.path("~", ".R_LIBS"))
+# set .libPaths to "~/.R_LIBS"
+if (dir.exists(file.path("~", ".R_LIBS")) || dir.create(file.path("~", ".R_LIBS"))) {
+  .libPaths(file.path("~", ".R_LIBS"))
+} else {
+  warning("\n******* .libPaths was undefined !!! *******\n")
 }
-.libPaths(file.path("~", ".R_LIBS"))
+
 
 # 起動時にロードするパッケージを追加
 # library(tidyverse)と記載すると後からdefaultPackagesが読み込まれるのでパスが上書きされる
@@ -39,6 +41,8 @@ local({
     pkgs <- pkgs[sapply(pkgs, function(x) {return(ifelse((requireNamespace(x, quietly = TRUE)), TRUE, FALSE))})]
     options(defaultPackages = c(original_default, pkgs))
     # getOption("defaultPackages")
+  } else {
+    message("\n~~~~~~ packrat/init.R was detected in this Project. No additional packages will be loaded. ~~~~~~\n")
   }
 })
 
@@ -193,7 +197,7 @@ if (requireNamespace("ggplot2", quietly = TRUE)) {
   }
 }
 
-message("\n*** Successfully loaded user .Rprofile ***\n")
+message("*** Successfully loaded user .Rprofile ***\n")
 
 # source projectdir/.Rprofile
 # R --vanilla returns "" to Sys.getenv("R_USER")
