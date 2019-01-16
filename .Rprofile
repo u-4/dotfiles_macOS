@@ -1,7 +1,7 @@
 #
 # .R/.Rprofile
 #
-message("\n*** Loading user .Rprofile (~/.Rprofile) ***")
+message("\n*** Loading user .Rprofile (~/.Rprofile) ***\n")
 
 # 主に以下を参考
 # https://github.com/heavywatal/rwtl/blob/master/.R/.Rprofile
@@ -24,27 +24,37 @@ options(warn=1,
         warnPartialMatchDollar=TRUE)
 
 # set .libPaths to "~/.R_LIBS"
+# this code must be placed below loading Project .Rprofile, which may contain packrat initialization
 if (dir.exists(file.path("~", ".R_LIBS")) || dir.create(file.path("~", ".R_LIBS"))) {
   .libPaths(file.path("~", ".R_LIBS"))
 } else {
   warning("\n******* .libPaths was undefined !!! *******\n")
 }
 
+# source projectdir/.Rprofile
+# R --vanilla returns "" to Sys.getenv("R_USER")
+if ((Sys.getenv("R_USER", unset = getwd()) != getwd()) && (file.exists(file.path(getwd(), ".Rprofile")))) {
+  message("* Project .Rprofile is detected. *\nLoading Project .Rprofile...")
+  source(file.path(getwd(), ".Rprofile"))
+  message("Successfully loaded Project .Rprofile\n")
+}
 
-# 起動時にロードするパッケージを追加
+# set additional packages to load
 # library(tidyverse)と記載すると後からdefaultPackagesが読み込まれるのでパスが上書きされる
-
-local({
-  if (!file.exists(file.path(getwd(), "packrat", "init.R"))) {
-    original_default <- getOption("defaultPackages")
-    pkgs <- c("tidyverse", "magrittr", "viridis")
-    pkgs <- pkgs[sapply(pkgs, function(x) {return(ifelse((requireNamespace(x, quietly = TRUE)), TRUE, FALSE))})]
-    options(defaultPackages = c(original_default, pkgs))
-    # getOption("defaultPackages")
-  } else {
-    message("\n~~~~~~ packrat/init.R was detected in this Project. No additional packages will be loaded. ~~~~~~\n")
-  }
+# to identify packrat mode by "R_PACKRAT_MODE", this code must be placed after loading project .Rprofile
+if (!is.na(Sys.getenv("R_PACKRAT_MODE", unset = NA))) {
+  message("* This project is under control of packrat. No additional packages will be loaded in global .Rprofile. *\n")
+} else {
+  local({
+  original_default <- getOption("defaultPackages")
+  pkgs <- c("tidyverse", "magrittr", "skimr")
+  pkgs <- pkgs[sapply(pkgs, function(x) {return(ifelse((requireNamespace(x, quietly = TRUE)), TRUE, FALSE))})]
+  options(defaultPackages = c(original_default, pkgs))
+  message(paste0("* These additional packages will be loaded. *\n", paste(pkgs, collapse = ", "), "\n"))
 })
+}
+
+# TODO: プロジェクトの.Rprofileに何らかの自前環境変数を設定したら追加処理を飛ばすような処理を追加
 
 # Show a summary of the call stack
 options(showWarnCalls=TRUE, showErrorCalls=TRUE)
@@ -159,7 +169,6 @@ setHook("persp",    get("familyset_hook", pos="JapanEnv"));
 if (requireNamespace("ggplot2", quietly = TRUE)) {
   ## ggplot2でのフォント設定
   ggplot2::theme_set(ggplot2::theme_bw(base_family="sans"))
-
   ## ggplot2の色設定
   options(ggplot2.continuous.colour = "viridis",
           ggplot2.continuous.fill = "viridis")
@@ -177,31 +186,19 @@ if (requireNamespace("ggplot2", quietly = TRUE)) {
 # ただしgetwd()がプロジェクトのルートからは変わらないことを前提にしている……
 
 .Last <- function(){
-  if (interactive()) {
-    ## check to see if we're in an RStudio project (requires the rstudioapi package)
-    if (Sys.getenv("RSTUDIO") != "1") {
-      return(NULL)
-    }
-    if (as.logical(sum(grepl(".Rproj", list.files())))) {
-      pth = getwd()
-      ## append date + sessionInfo to a file called sessionInfoLog
-      cat("Recording session info into the project's sesionInfoLog file...")
-      info <- capture.output(sessionInfo())
-      info <- paste("\n----------------------------------------------",
+  if (interactive() && !is.na(Sys.getenv("RSTUDIO", unset = NA)) && as.logical(sum(grepl(".Rproj", list.files())))) {
+    pth = getwd()
+     ## append date + sessionInfo to a file called sessionInfoLog
+    cat("Recording session info into the project's sesionInfoLog file...")
+    info <- capture.output(sessionInfo())
+    info <- paste("\n----------------------------------------------",
                   paste0('Session Info for ', Sys.time()),
                   paste(info, collapse = "\n"),
                   sep  = "\n")
-      f <- file.path(pth, "sessionInfoLog")
-      cat(info, file = f, append = TRUE)
-    }
+    f <- file.path(pth, "sessionInfoLog")
+    cat(info, file = f, append = TRUE)
   }
 }
 
+# confirm successful loading
 message("*** Successfully loaded user .Rprofile ***\n")
-
-# source projectdir/.Rprofile
-# R --vanilla returns "" to Sys.getenv("R_USER")
-if ((Sys.getenv("R_USER", unset = getwd()) != getwd()) && (file.exists(file.path(getwd(), ".Rprofile")))) {
-  source(file.path(getwd(), ".Rprofile"))
-}
-
