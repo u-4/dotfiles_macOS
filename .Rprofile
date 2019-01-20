@@ -13,7 +13,6 @@ options(repos = c(
   CRANextra = 'https://macos.rbind.org'
 ))
 
-
 # Disable annoying X11 popup
 options(menu.graphics=FALSE)
 
@@ -22,6 +21,29 @@ options(warn=1,
         warnPartialMatchArgs=FALSE,
         warnPartialMatchAttr=TRUE,
         warnPartialMatchDollar=TRUE)
+
+# Show a summary of the call stack
+options(showWarnCalls=TRUE, showErrorCalls=TRUE)
+
+# Maximum number of rows to print(tbl_df)
+options(tibble.print_max=30L)
+
+# Number of rows to print(tbl_df) if exceeded the maximum
+options(tibble.print_min=30L)
+
+# Suppress annoying function
+options(readr.num_columns=0L)
+
+# print numeric values in fixed: default scipen=0
+options(scipen=100)
+
+# set CPU cores to use in install.packages and boot::boot
+# to know the number of cores in your PC, use parallel::detectCores()
+options(Ncpus=4,
+        boot.ncpus=4)
+
+# set boot parallel method
+# options(boot.parallel="multicore")
 
 # set .libPaths to "~/.R_LIBS"
 # this code must be placed below loading Project .Rprofile, which may contain packrat initialization
@@ -44,32 +66,17 @@ if ((Sys.getenv("R_USER", unset = getwd()) != getwd()) && (file.exists(file.path
 # to identify packrat mode by "R_PACKRAT_MODE", this code must be placed after loading project .Rprofile
 if (!is.na(Sys.getenv("R_PACKRAT_MODE", unset = NA))) {
   message("* This project is under control of packrat. No additional packages will be loaded in global .Rprofile. *\n")
+} else if (!is.na(Sys.getenv("NO_ADDITIONAL_PACKAGES", unset = NA))) {
+  message("* This project is set to use 'defaultPackages'. No additional packages will be loaded in global .Rprofile. *\n")
 } else {
   local({
   original_default <- getOption("defaultPackages")
-  pkgs <- c("tidyverse", "magrittr", "skimr")
+  pkgs <- c("tidyverse", "magrittr", "fs", "skimr")
   pkgs <- pkgs[sapply(pkgs, function(x) {return(ifelse((requireNamespace(x, quietly = TRUE)), TRUE, FALSE))})]
   options(defaultPackages = c(original_default, pkgs))
   message(paste0("* These additional packages will be loaded. *\n", paste(pkgs, collapse = ", "), "\n"))
 })
 }
-
-# TODO: プロジェクトの.Rprofileに何らかの自前環境変数を設定したら追加処理を飛ばすような処理を追加
-
-# Show a summary of the call stack
-options(showWarnCalls=TRUE, showErrorCalls=TRUE)
-
-# Maximum number of rows to print(tbl_df)
-options(tibble.print_max=30L)
-
-# Number of rows to print(tbl_df) if exceeded the maximum
-options(tibble.print_min=30L)
-
-# Suppress annoying function
-options(readr.num_columns=0L)
-
-# print numeric values in fixed: default scipen=0
-options(scipen=100)
 
 # 
 # Font
@@ -187,7 +194,6 @@ if (requireNamespace("ggplot2", quietly = TRUE)) {
 
 .Last <- function(){
   if (interactive() && !is.na(Sys.getenv("RSTUDIO", unset = NA)) && as.logical(sum(grepl(".Rproj", list.files())))) {
-    pth = getwd()
      ## append date + sessionInfo to a file called sessionInfoLog
     cat("Recording session info into the project's sesionInfoLog file...")
     info <- capture.output(sessionInfo())
@@ -195,7 +201,7 @@ if (requireNamespace("ggplot2", quietly = TRUE)) {
                   paste0('Session Info for ', Sys.time()),
                   paste(info, collapse = "\n"),
                   sep  = "\n")
-    f <- file.path(pth, "sessionInfoLog")
+    f <- file.path(getwd(), "sessionInfoLog")
     cat(info, file = f, append = TRUE)
   }
 }
