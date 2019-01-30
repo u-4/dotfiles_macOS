@@ -173,7 +173,7 @@ setHook("persp",    get("familyset_hook", pos="JapanEnv"));
 #
 
 # ggplot2がインストールされていなければ`ggplot2::`系は呼び出さない
-if (requireNamespace("ggplot2", quietly = TRUE)) {
+if (is.na(Sys.getenv("NO_ADDITIONAL_PACKAGES", unset = NA)) && (requireNamespace("ggplot2", quietly = TRUE))) {
   ## ggplot2でのフォント設定
   ggplot2::theme_set(ggplot2::theme_bw(base_family="sans"))
   ## ggplot2の色設定
