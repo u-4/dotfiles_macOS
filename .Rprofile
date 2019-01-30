@@ -61,6 +61,9 @@ if ((Sys.getenv("R_USER", unset = getwd()) != getwd()) && (file.exists(file.path
   message("Successfully loaded Project .Rprofile\n")
 }
 
+# comment out to keep package settings clean
+# Sys.setenv("NO_ADDITIONAL_PACKAGES" = TRUE)
+
 # set additional packages to load
 # library(tidyverse)と記載すると後からdefaultPackagesが読み込まれるのでパスが上書きされる
 # to identify packrat mode by "R_PACKRAT_MODE", this code must be placed after loading project .Rprofile
