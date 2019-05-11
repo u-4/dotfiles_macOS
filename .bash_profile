@@ -2,6 +2,10 @@
 # .bash_profile
 #
 
+# brew sbin path
+
+export PATH="/usr/local/sbin:$PATH"
+
 #
 # 言語設定
 #
